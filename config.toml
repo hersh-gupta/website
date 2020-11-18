@@ -1,0 +1,79 @@
+theme = "hugo-PaperMod"
+baseURL = "http://hersh-gupta.github.io/"
+languageCode = "en-us"
+title = "Hersh V. Gupta"
+enableInlineShortcodes = true
+enableRobotsTXT = true
+paginate = 5
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
+# googleAnalytics: UA-123-45
+
+[permalinks]
+post = "/:year/:month/:day/:slug/"
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[languages.en]
+languageName = "English"
+weight = 1
+
+[[languages.en.menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 10
+
+[params]
+env = "production"
+description = "Hersh Gupta's Personal Website"
+author = "Hersh Gupta"
+ShowReadingTime = true
+defaultTheme = "dark"
+ShowShareButtons = false
+displayFullLangName = true
+  
+  [params.homeInfoParams]
+  Title = "Hi I'm Hersh"
+  Content = "and this is my personal website."
+  
+  [[params.socialIcons]]
+  name = "twitter"
+  url = "https://twitter.com/gupta_hersh"
+
+
+  [[params.socialIcons]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/hershvgupta/"
+
+  [[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/hersh-gupta"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[privacy.vimeo]
+disabled = false
+simple = true
+
+[privacy.twitter]
+disabled = false
+enableDNT = true
+simple = true
+
+[privacy.instagram]
+disabled = false
+simple = true
+
+[privacy.youtube]
+disabled = false
+privacyEnhanced = true
+
+[services.instagram]
+disableInlineCSS = true
+
+[services.twitter]
+disableInlineCSS = true

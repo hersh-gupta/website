@@ -1,0 +1,16 @@
+---
+title: Starting Off
+author: Hersh
+date: '2020-11-17'
+slug: first-post
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is the first, of what I hope are many more posts where I integrate my stats, programming, and policy background into something tangible. 
+
+I built this website using [`@yihui's`](https://yihui.org/en/) excellent [`blogdown`](https://bookdown.org/) tutorial. The template I'm using for this site comes from [`@adityatelange`](https://github.com/adityatelange/hugo-PaperMod).
+
+I'll be using this site as a space to post occasional writing and code around policy, politics and other things. 
