@@ -1,5 +1,5 @@
 theme = "hugo-PaperMod"
-baseURL = "http://hersh-gupta.github.io/"
+baseURL = "https://hershgupta.netlify.app"
 languageCode = "en-us"
 title = "Hersh V. Gupta"
 enableInlineShortcodes = true
