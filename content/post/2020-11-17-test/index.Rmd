@@ -9,7 +9,7 @@ slug: first-post
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This is the first, of what I hope are many more posts where I integrate my stats, programming, and policy background into something tangible. 
+This is the first of what I hope are many more posts where I integrate my stats, programming, and policy background into something tangible. 
 
 I built this website using [`@yihui's`](https://yihui.org/en/) excellent [`blogdown`](https://bookdown.org/) tutorial. The template I'm using for this site comes from [`@adityatelange`](https://github.com/adityatelange/hugo-PaperMod).
 

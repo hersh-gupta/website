@@ -192,6 +192,7 @@
     border-radius: 2px;
 }
 
+
 .post-content pre code {
     display: block;
     margin: auto 0;
@@ -333,3 +334,4 @@ h6:hover .anchor {
         padding: 0 21px
     }
 }
+

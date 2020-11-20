@@ -1,0 +1,240 @@
+---
+title: Visualizing the Spread of COVID-19 in DC
+author: Hersh
+date: '2020-11-20'
+slug: mapping-covid-in-dc
+categories:
+  - Maps
+tags:
+  - Coronavirus
+  - GIS
+  - DC
+---
+
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p><img src="index_files/covid_map_mar.gif" /></p>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>During the ongoing coronavirus pandemic, the District of Columbia Department of Health (DC Health) has been collecting and publishing data on the spread of COVID-19 in DC. Among other <a href="https://coronavirus.dc.gov/data">data</a> across the District and Wards, DC Health also provides statistics on the coronavirus across its Health Planning Neighborhoods (HPNs). While DC does not have official neighborhood boundaries, HPNs roughly follow census tract lines defined by the US Census Bureau and are used by DC Health for analysis and service delivery.</p>
+<p>The two most ostensible pieces of coronavirus-related data DC Health provides at the HPN level are: <strong>Total Positive Reported Cases</strong> and the <strong>Total Number of Tests</strong>. These metrics are released on a daily basis via the <a href="https://coronavirus.dc.gov/data">COVID-19 Surveillance webpage</a>. While these are preliminary numbers, subject to change in further reports, they do provide information at trends occurring at the neighborhood level. The goal of this post is to explore these trends.</p>
+<p>This post will be structured as follows:</p>
+<p><a href="#visualizing-total-positives"><strong>Visualizing Total Positives</strong></a><br />
+<a href="#visualizing-daily-cases"><strong>Visualizing Daily Cases </strong></a></p>
+</div>
+<div id="visualizing-total-positives" class="section level2">
+<h2>Visualizing Total Positives</h2>
+<p>While the DC OpenData Portal seems to have data on <a href="https://opendata.dc.gov/datasets/dc-covid-19-total-positive-cases-by-neighborhood">COVID-19 Total Positive Cases by Neighborhood</a>, it is out of date, as of the publishing of this post. Instead, DC is publishing Excel sheets daily via the <a href="https://coronavirus.dc.gov/data">COVID-19 Surveillance webpage</a>. The file with the relevant sheet is available here. Below, I retrieve and load in the relevant file.</p>
+<pre class="r"><code># Download surveillance data
+url &lt;- &quot;https://dcgov.app.box.com/index.php?rm=box_download_shared_file&amp;vanity_name=DCHealthStatisticsData&amp;file_id=f_645422184765&quot;
+dest &lt;- paste0(&quot;data/covid_&quot;,Sys.Date(),&quot;.xlsx&quot;)
+#download.file(url, dest , mode = &quot;wb&quot;)
+cases &lt;- readxl::read_excel(dest, sheet = &quot;Total Positives by Neighborhood&quot;)
+cases %&gt;% head %&gt;% kable</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="left">Neighborhood</th>
+<th align="right">Total Positives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2020-05-06</td>
+<td align="left">N13: COLUMBIA HEIGHTS</td>
+<td align="right">306</td>
+</tr>
+<tr class="even">
+<td align="left">2020-05-06</td>
+<td align="left">N1: 16th ST HEIGHTS</td>
+<td align="right">281</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-05-06</td>
+<td align="left">N7: BRIGHTWOOD</td>
+<td align="right">255</td>
+</tr>
+<tr class="even">
+<td align="left">2020-05-06</td>
+<td align="left">N12: CHINATOWN</td>
+<td align="right">252</td>
+</tr>
+<tr class="odd">
+<td align="left">2020-05-06</td>
+<td align="left">N31: LOGAN CIRCLE/SHAW</td>
+<td align="right">193</td>
+</tr>
+<tr class="even">
+<td align="left">2020-05-06</td>
+<td align="left">N37: NAYLOR/HILLCREST</td>
+<td align="right">191</td>
+</tr>
+</tbody>
+</table>
+<p>I then clean this data so that the HPN <code>CODE</code> and <code>DC_HPN_NAME</code> are separate columns while making sure that the data covers all dates from the start of the reporting to the end. I fill forward values if there are any missing days and add an index measuring the time parameter (<code>ORDER</code>).</p>
+<pre class="r"><code>cases_cl &lt;- cases %&gt;%
+  mutate(CODE = str_extract(Neighborhood, &quot;N\\d+&quot;),
+         DC_HPN_NAME = str_extract(Neighborhood, &quot;(?&lt;=\\: ).*&quot;),
+         DATE = as.Date(Date),
+         CODE = if_else(CODE == &quot;N35&quot;, &quot;N0&quot;, CODE),
+         CODE = if_else(is.na(CODE), &quot;Unknown&quot;, CODE),
+         DC_HPN_NAME = if_else(is.na(DC_HPN_NAME), &quot;Unknown&quot;, DC_HPN_NAME),
+         DC_HPN_NAME = if_else(DC_HPN_NAME == &quot;GWU&quot;, &quot;FOGGY BOTTOM/GWU&quot;, DC_HPN_NAME)) %&gt;%
+  distinct(CODE, DC_HPN_NAME, DATE, TOTAL_POSITIVES = `Total Positives`)
+
+cases_comb &lt;- expand.grid(CODE = unique(cases_cl$CODE),
+                          DATE = seq(min(cases_cl$DATE),max(cases_cl$DATE), by = &quot;days&quot;)) %&gt;%
+  distinct(.keep_all = T) %&gt;%
+  left_join(cases_cl, by = c(&quot;CODE&quot;,&quot;DATE&quot;)) %&gt;%
+  arrange(CODE, DATE) %&gt;%
+  fill(DC_HPN_NAME, .direction = &quot;updown&quot;) %&gt;%
+  group_by(CODE) %&gt;%
+  fill(TOTAL_POSITIVES, .direction = &quot;updown&quot;) %&gt;%
+  ungroup %&gt;%
+  mutate(TOTAL_POSITIVES = replace_na(TOTAL_POSITIVES, 0),
+         WEEK = lubridate::week(DATE),
+         WEEK = (WEEK - min(WEEK)) + 1 ,
+         DATE_FORMAT = format(DATE, &quot;%b %d&quot;),
+         DATE_FORMAT = if_else(CODE == &quot;N0&quot;, DATE_FORMAT, NA_character_),
+         ORDER = as.numeric((DATE - min(DATE)) + 1)) %&gt;%
+  select(CODE, DC_HPN_NAME, DATE, DATE_FORMAT, TOTAL_POSITIVES, ORDER)
+
+cases_comb %&gt;% head %&gt;% kable</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">CODE</th>
+<th align="left">DC_HPN_NAME</th>
+<th align="left">DATE</th>
+<th align="left">DATE_FORMAT</th>
+<th align="right">TOTAL_POSITIVES</th>
+<th align="right">ORDER</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">N0</td>
+<td align="left">NATIONAL MALL</td>
+<td align="left">2020-05-06</td>
+<td align="left">May 06</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">N0</td>
+<td align="left">NATIONAL MALL</td>
+<td align="left">2020-05-07</td>
+<td align="left">May 07</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">N0</td>
+<td align="left">NATIONAL MALL</td>
+<td align="left">2020-05-08</td>
+<td align="left">May 08</td>
+<td align="right">1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">N0</td>
+<td align="left">NATIONAL MALL</td>
+<td align="left">2020-05-09</td>
+<td align="left">May 09</td>
+<td align="right">1</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">N0</td>
+<td align="left">NATIONAL MALL</td>
+<td align="left">2020-05-10</td>
+<td align="left">May 10</td>
+<td align="right">1</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">N0</td>
+<td align="left">NATIONAL MALL</td>
+<td align="left">2020-05-11</td>
+<td align="left">May 11</td>
+<td align="right">1</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p>Furthermore, I fit a Generalized Additive Model to the data. This will be used to ensure that values in the animated map transition between days more seamlessly. This is stored in the <code>EST</code> column.</p>
+<pre class="r"><code>cases_comb_est &lt;- cases_comb %&gt;%
+  nest(data = -CODE) %&gt;% 
+  mutate(EST = map(data, ~round(gam(TOTAL_POSITIVES ~ s(ORDER, bs = &quot;cs&quot;), data = .x)$fitted.values, 0))) %&gt;% 
+  unnest(cols = c(data, EST)) %&gt;%
+  mutate(EST = if_else(EST &lt; 0, 0, EST))</code></pre>
+<p><img src="index_files/total_cases_hpn.png" /></p>
+<p>Additionally, geographies for each HPN are published via DC’s OpenData Portal. I read the file in below and assign it centroids for each HPN.</p>
+<pre class="r"><code># Health Planning Neighborhoods geographies
+url &lt;- &quot;https://opendata.arcgis.com/datasets/de63a68eb7674548ae0ac01867123f7e_13.geojson&quot;
+hpn &lt;- geojsonsf::geojson_sf(url)
+
+# Calculate centers of HPNs 
+hpn_cent &lt;- hpn %&gt;% 
+  bind_cols(as_tibble(st_coordinates(st_centroid(hpn$geometry)))) </code></pre>
+<p>Once the data is joined to the geographies, I plot it on the map using the following code:</p>
+<pre class="r"><code># Mapping
+cases_hpn &lt;- left_join(hpn_cent,cases_comb_est, by = &quot;CODE&quot;)
+
+map &lt;- cases_hpn %&gt;%
+  #filter(ORDER == 20) %&gt;%
+  ggplot(aes(fill = EST)) + 
+  geom_sf(color = &quot;white&quot;)+
+  coord_sf(crs = 4326, datum = NA, clip = &quot;off&quot;) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;, na.value=&quot;grey80&quot;,
+    labels = scales::comma_format(accuracy = 1)) +
+  geom_text(aes(label = round(TOTAL_POSITIVES,0), x = X, y = Y), size = 2.75, fontface = &quot;bold&quot;) +
+  geom_text(aes(label = DATE_FORMAT), x = -76.9, y = 38.97, fontface = &quot;bold&quot;, size = 6) +
+  theme_void()+
+  theme(legend.position = &quot;none&quot;, plot.title = element_text(face = &quot;bold&quot;, size = 16, hjust = .5)) +
+  labs(title=&quot;Total Reported COVID-19 Positive Cases&quot;) +
+  transition_time(ORDER) </code></pre>
+<p><img src="index_files/covid_map.gif" /></p>
+</div>
+<div id="visualizing-daily-cases" class="section level2">
+<h2>Visualizing Daily Cases</h2>
+<p>New cases can be calculated by subtracting the previous day’s total positive cases from the current day: <span class="math display">\[N_t = C_t - C_{t-1}\]</span> This is done with the data below.</p>
+<pre class="r"><code># Calculate New Daily Cases
+cases_comb_mar &lt;- cases_comb_est %&gt;% 
+  group_by(CODE) %&gt;%
+  mutate(MARGINAL_POSITIVES = TOTAL_POSITIVES - lag(TOTAL_POSITIVES),
+         #Remove anomalies in the data
+         MARGINAL_POSITIVES = if_else(MARGINAL_POSITIVES &lt; 0, 0 , MARGINAL_POSITIVES),
+         MARGINAL_POSITIVES = if_else(MARGINAL_POSITIVES &gt; 30, lag(MARGINAL_POSITIVES) , MARGINAL_POSITIVES)) %&gt;%
+  filter(!is.na(MARGINAL_POSITIVES))
+
+# LOESS Smooth New Cases for Mapping
+cases_comb_mar_est &lt;- cases_comb_mar %&gt;%
+  nest(data = -CODE) %&gt;% 
+  mutate(EST_MAR = map(data, ~round(loess(MARGINAL_POSITIVES ~ ORDER, data=.x, span=0.08)$fitted, 2))) %&gt;% 
+  unnest(cols = c(data, EST_MAR)) %&gt;%
+  mutate(EST_MAR = if_else(EST_MAR &lt; 0, 0, EST_MAR))</code></pre>
+<p><img src="index_files/new_cases_total.png" /></p>
+<p>Next, I join with geographic HPN data. Similar to above, this provides a geospatial dataset of new COVID-19 positive cases, which is then plotted here.</p>
+<pre class="r"><code># Join Geographic Data
+cases_hpn_mar &lt;- left_join(hpn_cent,cases_comb_mar_est, by = &quot;CODE&quot;)
+
+
+map_mar &lt;- cases_hpn_mar %&gt;%
+  ggplot(aes(fill = EST_MAR)) + 
+  geom_sf(color = &quot;white&quot;)+
+  coord_sf(crs = 4326, datum = NA, clip = &quot;off&quot;) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;, na.value=&quot;grey80&quot;,
+                      labels = scales::comma_format(accuracy = 1)) +
+  geom_text(aes(label = DATE_FORMAT), x = -76.9, y = 38.97, fontface = &quot;bold&quot;, size = 6) +
+  theme_void()+
+  theme(legend.position = &quot;none&quot;, plot.title = element_text(face = &quot;bold&quot;, size = 16, hjust = .5)) +
+  labs(title=&quot;New COVID-19 Positive Cases per Day&quot;, 
+       caption = &quot;Source: https://coronavirus.dc.gov/data, Nov. 19 2020&quot;) +
+  transition_time(ORDER) </code></pre>
+<p><img src="index_files/covid_map_mar.gif" /></p>
+<p>The data here can be used to model the spread of outbreaks. While this post simply explored the data, the following post will be an effort to produce spatial-temporal model of the COVID-19 spread in DC.</p>
+</div>

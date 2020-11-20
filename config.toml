@@ -34,7 +34,7 @@ ShowShareButtons = false
 displayFullLangName = true
   
   [params.homeInfoParams]
-  Title = "Hi I'm Hersh"
+  Title = "Hi, I'm Hersh"
   Content = "and this is my personal website."
   
   [[params.socialIcons]]
