@@ -29,7 +29,7 @@ env = "production"
 description = "Hersh Gupta's Personal Website"
 author = "Hersh Gupta"
 ShowReadingTime = true
-defaultTheme = "dark"
+defaultTheme = "light"
 ShowShareButtons = false
 displayFullLangName = true
   
