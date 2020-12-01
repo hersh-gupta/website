@@ -31,6 +31,7 @@ ShowReadingTime = true
 defaultTheme = "light"
 ShowShareButtons = false
 displayFullLangName = true
+math = true
   
   [params.homeInfoParams]
   Title = "Hi, I'm Hersh"
