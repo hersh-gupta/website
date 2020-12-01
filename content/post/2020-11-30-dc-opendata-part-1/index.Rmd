@@ -10,8 +10,6 @@ tags:
   - DC
   - GIS
   - Health
-images: 
-  - output/tracts_underserved.png
 ---
 
 ```{r setup, include=FALSE}
