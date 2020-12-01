@@ -1,7 +1,7 @@
 theme = "hugo-PaperMod"
 baseURL = "https://hershgupta.com"
 languageCode = "en-us"
-title = "Hersh V. Gupta"
+title = "Hersh Gupta"
 enableInlineShortcodes = true
 enableRobotsTXT = true
 paginate = 5
@@ -31,10 +31,14 @@ ShowReadingTime = true
 defaultTheme = "light"
 ShowShareButtons = false
 displayFullLangName = true
+math = true
   
   [params.homeInfoParams]
-  Title = "Hi, I'm Hersh"
-  Content = "and this is my personal website."
+  Title = "Hi, I'm Hersh 👋"
+  Content = '''
+  I'm a data scientist based in Washington, DC.  
+  **Connect with me here 👇**
+  '''
   
   [[params.socialIcons]]
   name = "twitter"

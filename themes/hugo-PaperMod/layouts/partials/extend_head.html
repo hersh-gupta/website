@@ -11,4 +11,7 @@ Insert any custom code (web-analytics, resources, etc.) - it will appear in the 
 
   gtag('config', 'G-GXXLWF1R58');
 </script>
+{{ if or .Params.math .Site.Params.math }}
+{{ partial "math.html" . }}
+{{ end }}
 <!-- Head custom content area end -->
