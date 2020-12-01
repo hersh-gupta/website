@@ -1,0 +1,161 @@
+---
+title: 'Analyzing DC OpenData, Part 1: Distribution of Primary Care in the District'
+author: Hersh
+date: '2020-11-30'
+slug: dc-opendata-part-1
+categories:
+  - Maps
+  - OpenData
+tags:
+  - DC
+  - GIS
+  - Health
+---
+
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p><img src="output/tracts_underserved.png" /></p>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>The District of Columbia government publishes data available for public use via its <a href="https://opendata.dc.gov/">OpenData DC</a> portal. The OpenData DC portal is a white-labeled ArcGIS Site, where the Office of the Chief Technology Officer curates datasets, often geographic data, relating to services the District provides.</p>
+<p>This post is the first part of what will be an ongoing series of blog posts, where I explore a dataset made available via the OpenData DC portal. I analyze the data using the statistical programming language R, as a way to demonstrate its capabilities and provide examples for R users who may want to replicate the analysis.</p>
+<p>Here, I examine data provided by the DC Department of Health (DC Health), regarding the location of primary care centers throughout the District. The <a href="https://opendata.dc.gov/datasets/primary-care-centers-2">Primary Care Centers</a> dataset contains the geometries, or geographic locations, of each primary care center. This data is then matched to the population density of the Census Tract (from the <a href="https://www.census.gov/data/developers/data-sets/acs-5year.html">2018 American Community Survey</a>) in the area which the primary care center serves. Finally, I examine whether there are areas of greater population density which may be underserved as a consequence of their distance from primary care centers.</p>
+</div>
+<div id="downloading-and-cleaning-the-data" class="section level2">
+<h2>Downloading and Cleaning the Data</h2>
+<p>The first step here is to pull in the data using the GeoJSON API available via the link on the dataset page.</p>
+<p><img src="output/screenshot_1.png" /></p>
+<p>Using the link provided in the GeoJSON box, I read it into R using the <code>geojson_sf()</code> function. I then plot it using the <code>ggplot</code> package.</p>
+<pre class="r"><code>library(tidyverse)
+library(geojsonsf)
+library(sf)
+
+# Point to the link
+pc_centers_url &lt;- &quot;https://opendata.arcgis.com/datasets/018890d7399245759f05c7932261ef44_7.geojson&quot;
+
+# Download and read in the data
+pc_centers &lt;- geojsonsf::geojson_sf(pc_centers_url)
+
+# See what this gives us
+pc_centers %&gt;% 
+  ggplot() +
+  geom_sf() </code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>This plot shows us the locations of all the primary care centers in DC. However, I want to take this a step further and examine how well-positioned each primary care center is to populated areas.</p>
+<p>I can do this by loading data from the Census regarding the population density (as measured by population per square mile) of each <a href="https://www.census.gov/programs-surveys/geography/about/glossary.html#par_textimage_13">Census Tract</a>.</p>
+<pre class="r"><code>library(tidycensus)
+
+#Get Census data and map
+pop &lt;- tidycensus::get_acs(geography = &quot;tract&quot;, 
+                           state = 11, 
+                           county = 001, 
+                           year = 2018, 
+                           survey = &quot;acs5&quot;, 
+                           variables = &quot;B01001_001&quot;,
+                           geometry = T,
+                           output = &quot;tidy&quot;, )
+
+pop_cl &lt;- pop %&gt;% 
+  sf::st_transform(crs = 3559) %&gt;% #this sets the projection we&#39;re using
+  mutate(area = sf::st_area(geometry) %&gt;% units::set_units(mi^2), #calcuate area
+         density = as.numeric(estimate/area)) #divide area by population
+
+# Create population density map
+pc_density_map &lt;- pop_cl %&gt;% 
+  ggplot(aes(fill = density)) +
+  geom_sf(color = &quot;white&quot;) +
+  # Include primary health center data
+  geom_sf(data = pc_centers, inherit.aes = F, 
+          color = &quot;navy&quot;, stroke = 1, fill = &quot;navy&quot;, alpha = .4) +
+  # Add color representing population density
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;, 
+                      labels = scales::comma_format(accuracy = 1)) +
+  labs(title = &quot;Primary Care Centers by Population Density&quot;,
+       fill = &quot;Population Per Sq. Mile&quot;,
+       caption = &quot;Source: American Community Survey 5-Year Data (2009-2018), DC OpenData Portal&quot;) +
+  theme_void() +
+  theme(plot.title = element_text(face = &quot;bold&quot;, size = 16, hjust = .5),
+        plot.caption = element_text(face = &quot;bold&quot;, hjust = .5))</code></pre>
+<p><img src="output/pc_density_map.png" /></p>
+<p>This graph shows the population density of DC, calculated via the American Community Survey from the Census. The points overlaid show the location of each primary care health center. There are certain Census Tracts that have a fairly dense population, but are further away from primary care centers. Conversely, there are primary care centers further away from dense Census Tracts. Ideally, we would want a the number of primary care centers to be proportional to the population density in a given area.</p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>In order to explore whether some areas may be underserved I assume that each primary care center has an geographic area that it serves. Here, each primary care center is assumed to receive most of its patients from within a 0.5 mile radius (‘Service Area’). This may create an unusually narrow boundary, particuarly given that I am not factoring differences in the distances people may walk, drive, or take public transportation to, that would otherwise expand or contract a primary care center’s Service Area.</p>
+<p>With these assumptions in mind, I map the number of primary care centers’ Service Areas that overlap with each Census Tract here.</p>
+<pre class="r"><code># Mapping Service Area
+
+pc_area_map &lt;- pop_cl %&gt;% 
+  ggplot() +
+  geom_sf(color = &quot;white&quot;, aes(fill = density)) +
+  # Calculate service areas
+  geom_sf(data = pc_centers %&gt;% sf::st_transform(crs = 3559)  %&gt;% st_buffer(dist = 800) , inherit.aes = F, color = NA, fill = &quot;navy&quot;, alpha = .2) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;, na.value=&quot;grey80&quot;,
+                      labels = scales::comma_format(accuracy = 1)) +
+  labs(title = &quot;Primary Care Center Service Area by Population Density&quot;,
+       fill = &quot;Population Per Sq. Mile&quot;,
+       caption = &quot;Source: American Community Survey 5-Year Data (2009-2018), DC OpenData Portal&quot;) +
+  theme_void() +
+  theme(plot.title = element_text(face = &quot;bold&quot;, size = 16, hjust = 0),
+        plot.caption = element_text(face = &quot;bold&quot;, hjust = 0))</code></pre>
+<p><img src="output/pc_area_map.png" />
+The map above shows generally good coverage in the most population-dense Census Tracts. However there are a few tracts with a moderately large population density, that have no primary care centers within the Service Area defined here.</p>
+<p>In order to identify these, I first plot them on a graph showing each tract’s population density and the number of primary care centers within the specified Service Area.</p>
+<pre class="r"><code># Find intersections between Tracts and Service Area
+intersection &lt;- st_intersects(pop_cl %&gt;% select(GEOID,density), 
+                      pc_centers %&gt;% 
+                        st_buffer(dist = 800) %&gt;%
+                        select(GEOID, PrimaryCarePtNAME))
+
+# Count the number of primary care centers within tracts
+dens &lt;- pop_cl %&gt;% 
+  select(GEOID,density) %&gt;%
+  sf::st_drop_geometry() %&gt;%
+  mutate(count = map(intersection, length) %&gt;% unlist) %&gt;%
+  arrange(desc(density))
+
+# Plot this 
+pop_dens &lt;- dens %&gt;% 
+  ggplot(aes(density, count)) +
+  geom_point() +
+  geom_point(data=dens %&gt;% filter(count == 0 &amp; density &gt; 20000),size=3,color=&quot;red&quot;) +
+  geom_smooth(method = &quot;lm&quot;, se = F, lty = 2) +
+  theme_minimal() +
+  labs(x = &quot;Population Per Sq. Mile&quot;, 
+       y = &quot;Primary Care Facilities within Half Mile Distance&quot;) +
+  scale_x_continuous(labels = scales::comma_format()) +
+  scale_y_continuous(breaks = seq(0,10,2))</code></pre>
+<p><img src="output/pop_dens.png" /></p>
+<p>The tracts with sizable population density (20,000+ PPSM) that have no primary service centers within a half-mile radius are identified in red. There are six of them identified on the graph here.</p>
+<p>Lastly, I identify them on the original map here:</p>
+<pre class="r"><code># Identify underserved areas
+underserved &lt;- dens %&gt;% filter(count == 0 &amp; density &gt; 20000)
+
+# Outline areas on original map
+tracts_underserved &lt;- pop_cl %&gt;% 
+  mutate(underserved = GEOID %in% underserved$GEOID) %&gt;%
+  ggplot() +
+  geom_sf(aes(fill = density, color = underserved), stroke = 2) +
+  geom_sf(data = pc_centers %&gt;% sf::st_transform(crs = 3559)  %&gt;% st_buffer(dist = 800), 
+          inherit.aes = F, color = NA, fill = &quot;navy&quot;, alpha = .2) +
+  scale_color_manual(values = c(&quot;white&quot;,&quot;navy&quot;), guide = F) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;, na.value=&quot;grey80&quot;,
+                      labels = scales::comma_format(accuracy = 1)) +
+  labs(title = &quot;Underserved Census Tracts&quot;,
+       subtitle = &quot;High-Density Tracts without Primary Care Centers in Half-Mile Radius&quot;,
+       fill = &quot;Population Per Sq. Mile&quot;,
+       caption = &quot;Source: American Community Survey 5-Year Data (2009-2018), DC OpenData Portal&quot;) +
+  theme_void() +
+  theme(plot.title = element_text(face = &quot;bold&quot;, size = 16, hjust = 0),
+        plot.caption = element_text(face = &quot;bold&quot;, hjust = 0))</code></pre>
+<p><img src="output/tracts_underserved.png" /></p>
+<p>The areas identified with a blue outline are those that could, under the assumptions noted here, but underserved, when it comes to having primary care centers within a half-mile radius.</p>
+</div>
+<div id="discussion" class="section level2">
+<h2>Discussion</h2>
+<p>As noted here, this is only a preliminary analysis. Further analyses may seek to determine the average distance between each primary care center and resident. This kind of analysis would require resident addresses and information about how each resident commutes.</p>
+<p>A simpler method may be to adjust the Service Area radius by the proportion of residents in each tract reporting using different methods of transportation, which is available as a Census variable.</p>
+<p>Additionally, the size of each primary care center and whether or not it is available to everyone in the public or select individuals would also determine whether or not residents are generally well-served by the centers closest to them.</p>
+</div>
