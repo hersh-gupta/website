@@ -10,6 +10,10 @@ tags:
   - DC
   - GIS
   - Health
+twitter:
+  - card: "summary_image_large"
+  - creator: "@gupta_hersh"
+  - image: "https://hershgupta.com/2020/11/30/dc-opendata-part-1/output/tracts_underserved.png"
 ---
 
 ```{r setup, include=FALSE}
