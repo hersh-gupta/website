@@ -1,0 +1,160 @@
+---
+title: 'Analyzing DC OpenData, Part 2: Analyzing Public Computer Use in DC'
+author: 'Hersh'
+date: '2020-12-07'
+slug: dc-opendata-part-2
+categories:
+  - Maps
+  - OpenData
+tags:
+  - DC
+  - GIS
+---
+
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p><img src="output/comp_geo.png" /></p>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>The DC Public Library (DCPL) system ensures residents have access to basic technology services by providing computers and internet access at various locations throughout the District. DCPL <a href="https://opendata.dc.gov/datasets/library-resource-usage/data">publishes data</a> of the use of these services on a yearly basis.</p>
+<p>Here, I examine the relationship between the use of public technology services and the absence of technology throughout the district. In particular, I look at whether areas that report the absence of computers or internet access have increased usage of these services at DC Public Library (DCPL) locations.</p>
+<p><em>This is the second part of an ongoing series of posts using <a href="https://opendata.dc.gov/">DC’s OpenData portal</a> for analyzing data using R <a href="https://hershgupta.com/2020/11/30/dc-opendata-part-1/">(See part one here)</a>. </em></p>
+</div>
+<div id="downloading-and-cleaning-the-data" class="section level2">
+<h2>Downloading and Cleaning the Data</h2>
+<p>The DC OpenData portal publishes data on DCPL use by library branch and the locations of each library separately. I download the data, filter to fiscal year 2019, and merge these two datasets with the following code:</p>
+<pre class="r"><code># Load packages for analysis
+library(tidyverse)
+library(geojsonsf)
+library(sf)
+
+# Get library usage data and geometry 
+usage &lt;- geojsonsf::geojson_sf(&quot;https://opendata.arcgis.com/datasets/f088a09f8bd04aba8cd6b5b344ae9bb3_56.geojson&quot;) %&gt;% 
+  sf::st_drop_geometry() %&gt;% # Remove unnecessary columns
+  filter(FISCAL_YEAR == 2019) # Filter to FY19
+
+# Get library locations 
+libraries &lt;-  geojson_sf(&quot;https://opendata.arcgis.com/datasets/cab0eaaad4e242c18a36422c3323e6ac_4.geojson&quot;) %&gt;%
+  left_join(usage, by = &quot;GIS_ID&quot;) %&gt;% # Join to usage  data
+  sf::st_transform(crs = 3559)  # Use the correct map projection</code></pre>
+<p>This gives us the following data, with the locations of each library:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">NAME</th>
+<th align="left">FISCAL_YEAR</th>
+<th align="right">COMPUTER_SESSIONS</th>
+<th align="right">WIFI_USE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shaw (Watha T. Daniel)</td>
+<td align="left">2019</td>
+<td align="right">67816</td>
+<td align="right">54681</td>
+</tr>
+<tr class="even">
+<td align="left">Woodridge</td>
+<td align="left">2019</td>
+<td align="right">56331</td>
+<td align="right">20818</td>
+</tr>
+<tr class="odd">
+<td align="left">Benning (Dorothy I. Height)</td>
+<td align="left">2019</td>
+<td align="right">54995</td>
+<td align="right">25623</td>
+</tr>
+<tr class="even">
+<td align="left">West End</td>
+<td align="left">2019</td>
+<td align="right">54789</td>
+<td align="right">37684</td>
+</tr>
+<tr class="odd">
+<td align="left">Mt. Pleasant</td>
+<td align="left">2019</td>
+<td align="right">53365</td>
+<td align="right">32125</td>
+</tr>
+<tr class="even">
+<td align="left">Petworth</td>
+<td align="left">2019</td>
+<td align="right">51623</td>
+<td align="right">41092</td>
+</tr>
+</tbody>
+</table>
+<p>Next we want to add data regarding the presence of technology services within households in DC. The best place to retreive this information is via the US Census’ American Community Survey (ACS). R makes it easy to download this data, along with the geographic boundaries of Census Tracts in DC:</p>
+<pre class="r"><code>library(tidycensus)
+
+# Get Census estimates for &quot;No Computer&quot;
+comp &lt;- tidycensus::get_acs(geography = &quot;tract&quot;, 
+                           state = 11, 
+                           county = 001, 
+                           year = 2018, 
+                           survey = &quot;acs5&quot;, 
+                           variables = c(&quot;B28001_011E&quot;, # No Computer in Household
+                                          &quot;B28002_013E&quot;) # No Internet Access
+                           geometry = T, output = &quot;wide&quot;)
+
+# Use the correct map projection for census tracts
+comp_geo &lt;- comp %&gt;% 
+  sf::st_transform(crs = 3559)</code></pre>
+<p><img src="output/no_comp.png" /></p>
+<p>This map shows Census Tracts that have high rates of households responding “No Computer” when asked whether they have a computer in the house.</p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>I join the data from DC’s OpenData portal with the data from the American Community Survey. This will allow me to examine whether areas of DC that report higher absence of computers in the household are also near public libraries that report higher computer usage.</p>
+<p>Note, I use 400 meters, which is roughly a quarter-mile, as that can be loosely defined as walking distance between DC neighborhoods.</p>
+<pre class="r"><code># Join data
+joined &lt;- st_join(comp_geo, libraries%&gt;% 
+                    st_buffer(dist = 400)) %&gt;%
+  replace_na(list(COMPUTER_SESSIONS = 0)) %&gt;%
+  rename(NO_COMPUTER = B28001_011E,
+         NO_INTERNET = B28002_013E)
+
+# Plot relationship
+joined %&gt;%
+  ggplot(aes(NO_COMPUTER, COMPUTER_SESSIONS)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = F, lty = 2) + 
+  scale_y_continuous(labels = scales::comma_format()) +
+  labs(x = &quot;Number of Households in Census Tract Reporting No Computers in Household&quot;, 
+       y = &quot;Computer Sessions Reported by Local Library&quot;,
+       titles = &quot;Libraries Near Areas with No Household Computers Report Greater Computer Use&quot;,
+       caption = &quot;Source: American Community Survey 5-Year Data (2009-2018), DC OpenData Portal&quot;) +
+  theme_minimal(base_size = 18)</code></pre>
+<p><img src="output/comp_use.png" /></p>
+<p>The data shows a positive relationship between the number of households in a Census Tract reporting not having a computer and the number of computer sessions at the nearby library. This is a significant relationship at the <span class="math inline">\(\alpha = .05\)</span> level, with the lack of computers in the household explaining approximately 25% of the variation in computer sessions alone. The results also indicated that for every additional household without a computer, there was, on average, an increase of 15 to 37 computer sessions at the nearby library, over the course of a year.</p>
+</div>
+<div id="discussion" class="section level2">
+<h2>Discussion</h2>
+<p>There is, however, variation in this trend. Specifically, there is geographic variation in this data. As noted above, there are areas in DC with a high concentration of households without computers. Plotting this data on a map may help reveal areas in which there are high numbers of households without computers.</p>
+<pre class="r"><code>joined %&gt;%
+  ggplot() +
+  geom_sf(aes(fill = NO_COMPUTER), color = &quot;white&quot;) +
+  geom_sf(data = libraries %&gt;% filter(COMPUTER_SESSIONS &gt; 0), 
+          aes(size = COMPUTER_SESSIONS),
+          inherit.aes = F, color = &quot;navy&quot;, alpha = .3) +
+  geom_sf_text(data = libraries %&gt;% filter(COMPUTER_SESSIONS &gt; 0), 
+               aes(label = NAME.x), size = 2, vjust = -1.5) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;, na.value=&quot;grey80&quot;,
+                      labels = scales::comma_format(accuracy = 1)) +
+  scale_size_continuous(labels = scales::comma_format()) +
+  labs(title = &quot;Use of Library Computers in DC&quot;,
+       subtitle = &quot;by Areas with High Absence of Household Computers&quot;,
+       fill = &quot;Households without Computers&quot;,
+       size = &quot;Library Computer Sessions&quot;, 
+       caption = &quot;Source: American Community Survey 5-Year Data (2009-2018), DC OpenData Portal&quot;) +
+  theme_void()</code></pre>
+<p><img src="output/comp_geo.png" /></p>
+<p>Here we see that there some areas with higher numbers of households without computers. However, Some of these areas may not be close enough to a public library. I have highlighted a few of these below:</p>
+<p><img src="output/comp_geo_highlight.png" /></p>
+<p>While there are libraries adjacent to areas that have a higher absence of computers, it may simply be important to note that the computer use at these libraries is lower than at other libraries near areas with a lower absence of computers.</p>
+<p>It may be important for decision-makers in the District to recognize that these areas may be better served by expanding public technology services and encouraging the use of these services.</p>
+</div>
