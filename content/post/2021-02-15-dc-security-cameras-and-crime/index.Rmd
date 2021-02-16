@@ -38,7 +38,7 @@ The map below shows that, in some [Police Service Areas (PSAs)](https://mpdc.dc.
 
 ![](output/map_ccf.png)
 
-The correlations obtained in this graph are calculated using the [cross correlation function](https://www.investopedia.com/terms/c/crosscorrelation.asp) between the number of crimes and the number of camera rebates over time, up to 3 months lag in crimes. 
+The correlations obtained in this graph are calculated using the [cross correlation function](https://www.investopedia.com/terms/c/crosscorrelation.asp) between the number of crimes and the number of camera rebates over time, with up to 3 months lag in crimes. 
 
 This can be done with the following R code (code and data for this post can be found [here](https://github.com/hersh-gupta/website/tree/master/content/post/2021-02-15-dc-security-cameras-and-crime)):
 
