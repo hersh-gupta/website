@@ -1,0 +1,11 @@
+---
+title: What's Going on with DC Crime Rates
+author: Hersh Gupta
+date: '2021-05-26'
+slug: dc-crime-rates
+categories:
+  - OpenData
+tags:
+  - Public Safety
+---
+
