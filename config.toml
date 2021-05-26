@@ -29,14 +29,14 @@ description = "Hersh Gupta's Personal Website"
 author = "Hersh Gupta"
 ShowReadingTime = true
 defaultTheme = "light"
-ShowShareButtons = false
+ShowShareButtons = true
 displayFullLangName = true
 math = true
   
   [params.homeInfoParams]
   Title = "Hi, I'm Hersh 👋"
   Content = '''
-  I'm a data scientist based in Washington, DC.  
+  I'm a data scientist based in Washington, DC. This this my blog.  
   **Connect with me here 👇**
   '''
   
