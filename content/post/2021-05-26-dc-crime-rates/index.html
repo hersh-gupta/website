@@ -1,0 +1,26 @@
+---
+title: What's Going on with DC Crime Rates?
+author: Hersh Gupta
+date: '2021-05-27'
+slug: dc-crime-rates
+categories:
+  - OpenData
+tags:
+  - Public Safety
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p><img src="output/crimes_and_violent_crime.png" /></p>
+<p>In the last few months, there has been an increase in violent crime in DC. This lead Mayor Bowser to set up a gun violence <a href="https://www.wusa9.com/article/news/crime/building-blocks-dc-gun-violence-prevention-program-dc/65-9eb46a67-f504-42f7-bb37-3d3837c82426">emergency operations center</a> and declare gun violence a public health emergency. In a press conference, Mayor Bowser presented the following data:</p>
+<p><img src="output/slide.png" /></p>
+<p>The two graphs in the slide from Mayor Bowser’s presser show a decrease in violent crimes while also showing an increase in gun crime. <strong>This, however, may be misleading.</strong> In particular, what the graph on the left does not show is that while there is an overall decrease in crime, the violent crime rate is actually increasing.</p>
+<p>Using data from the Metropolitan Police Department (MPD) via the OpenData DC portal, I downloaded crime data from the last five years, 2017 to May 2020. My analysis found that there was a decrease in the number of crimes reported since 2017. However, <strong>the rate of violent crimes has been increasing</strong> since early 2020, around the start of the pandemic.</p>
+<p><img src="output/crimes_and_violent_crime.png" /></p>
+<p>The rise in violent crime has particuarly centered around the increase in gun-related violence. Gun violence increases every year, usually in the spring and summer months. The chart below shows that gun crimes in 2021 are following this seasonal trend.</p>
+<p><img src="output/gun_crime_month.png" /></p>
+<p>However, the number of crimes involving guns has trended higher in the first few months of 2021 than in the same time period in any of the other years. Furthermore, the percentage of crimes in which a gun was involved has stayed at record levels.</p>
+<p><img src="output/gun_crime.png" /></p>
+<p>Mayor Bowser’s plan to use a “data-driven” approach is laudable. However, the approach needs to be transparent with the information being collecting and the methodology behind what’s being published.</p>
+<p>Code for this analysis available on <a href="https://github.com/hersh-gupta/dc-violent-crime">Github</a>.</p>
