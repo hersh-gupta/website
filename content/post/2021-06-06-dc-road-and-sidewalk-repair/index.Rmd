@@ -36,7 +36,7 @@ First, I summarize the number and percentage of each type of request and whether
 
 ![](output/repair_requests_2020_sum.png)
 
-So how long do sidewalk repair requests take to complete? When looking at the data from 2020, we see that, of the requests that were completed, **more than half of them took over 100 days to complete. A quarter of these requests took even longer -- more than 250 days be permanently resolved.** 
+So how long do sidewalk repair requests take to complete? When looking at the data from 2020, we see that, of the requests that were completed, **more than half of them took over 100 days to complete. A quarter of these requests took even longer -- more than 250 days to be permanently resolved.** 
 
 ![](output/repair_boxplot.png)
 
@@ -59,7 +59,7 @@ repair_requests_2020_cl %>%
 
 ```
 
-Table 1 shows a majority of pothole requests are meeting DDOTs standard of 72 hours to close. However, **most sidewalk repair requests have taken over four times longer than the 25 days DDOT has allotted.**
+Table 1 shows a majority of pothole requests are meeting DDOT's standard of 72 hours to close. However, **most sidewalk repair requests have taken over four times longer than the 25 days DDOT has allotted.**
 
 The discrepancies shown here are the reason why citizen initiatives such as the recent [Sidewalk Palooza](https://ggwash.org/view/81555/dc-residents-create-sidewalk-palooza-for-pedestrian-safety) are organized. With greater awareness and analysis of these infrastructure problems, perhaps DDOT can take further steps to address them. 
 
