@@ -1,0 +1,76 @@
+---
+title: How Long Does It Take to Fix a Sidewalk?
+author: Hersh
+date: '2021-06-06'
+slug: dc-road-and-sidewalk-repair
+categories:
+  - OpenData
+tags:
+  - DC
+  - Transportation
+  - Roads
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p><img src="cover.png" /></p>
+<p>The DC’s <a href="https://311.dc.gov/citizen/home">311 City Service portal</a> allows District residents and visitors to submit requests for government services. DC then provides data for all 311 requests publicly via its <a href="https://opendata.dc.gov/datasets/82b33f4833284e07997da71d1ca7b1ba_11">OpenData Portal</a>. Using this data, I can summarize how long it takes DC’s Department of Transportation (DDOT) to respond to repair requests.</p>
+<p>Specifically, I look at how long it takes DDOT to respond to <strong>alleyway repairs</strong>, <strong>roadway repairs</strong>, <strong>potholes</strong>, and <strong>sidewalk repairs</strong> using data from 2020. DDOT defines each of these types of repairs in more detail <a href="https://ddot.dc.gov/page/request-repairs">here</a>.</p>
+<p>Among other fields, the data includes the following:</p>
+<ul>
+<li><strong>Service Description</strong>: the type of service requested</li>
+<li><strong>Service Request Date</strong>: the date the request was ordered</li>
+<li><strong>Service Status</strong>: whether the request has been completed (closed) or is open (in-progress)</li>
+<li><strong>Service Resolution Date</strong>: the date the request was completed</li>
+</ul>
+<p>First, I summarize the number and percentage of each type of request and whether it was closed. The graph below shows that, <strong>of the sidewalk repair requests made in 2020, less than half were designated closed as of the date this post was written</strong>. Compare this to 100% of all pothole requests in 2020 having been closed. Note that the <a href="https://ddot.dc.gov/service/sidewalk-repair">process of sidewalk repair</a> requires an investigation, and, in the absence of findings, requests are seemingly marked as “In-Progress” indefinitely.</p>
+<p><img src="output/repair_requests_2020_sum.png" /></p>
+<p>So how long do sidewalk repair requests take to complete? When looking at the data from 2020, we see that, of the requests that were completed, <strong>more than half of them took over 100 days to complete. A quarter of these requests took even longer – more than 250 days be permanently resolved.</strong></p>
+<p><img src="output/repair_boxplot.png" /></p>
+<p>According to their <a href="https://ddot.dc.gov/service/sidewalk-repair">website</a>, “DDOT’s standard is to resolve sidewalk repair requests within 25 business days of the time they are reported.” For pothole repair this time is stated as only three days.</p>
+<style>
+  table {
+    display: inline-table;
+  }
+</style>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>Service Request Closure Time (in days), as of June 6, 2021</caption>
+<thead>
+<tr class="header">
+<th align="left">Service</th>
+<th align="left">Median</th>
+<th align="left">Average</th>
+<th align="right">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alley Repair</td>
+<td align="left">157.0 days</td>
+<td align="left">169 days</td>
+<td align="right">279</td>
+</tr>
+<tr class="even">
+<td align="left">Pothole</td>
+<td align="left">3.0 days</td>
+<td align="left">10 days</td>
+<td align="right">3791</td>
+</tr>
+<tr class="odd">
+<td align="left">Roadway Repair</td>
+<td align="left">114.5 days</td>
+<td align="left">140 days</td>
+<td align="right">708</td>
+</tr>
+<tr class="even">
+<td align="left">Sidewalk Repair</td>
+<td align="left">106.0 days</td>
+<td align="left">147 days</td>
+<td align="right">1863</td>
+</tr>
+</tbody>
+</table>
+<p>Table 1 shows a majority of pothole requests are meeting DDOTs standard of 72 hours to close. However, <strong>most sidewalk repair requests have taken over four times longer than the 25 days DDOT has allotted.</strong></p>
+<p>The discrepancies shown here are the reason why citizen initiatives such as the recent <a href="https://ggwash.org/view/81555/dc-residents-create-sidewalk-palooza-for-pedestrian-safety">Sidewalk Palooza</a> are organized. With greater awareness and analysis of these infrastructure problems, perhaps DDOT can take further steps to address them.</p>
+<p>Code for this analysis available on <a href="https://github.com/hersh-gupta/dc-sidewalk-repair">Github</a>.</p>
