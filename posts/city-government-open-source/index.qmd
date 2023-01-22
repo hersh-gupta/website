@@ -18,7 +18,7 @@ cities_table <- read_rds("data/cities_table.rds")
 ```
 
 
-In 2016, then US Chief Information Officer Tony Scott [announced](https://obamawhitehouse.archives.gov/blog/2016/11/03/peoples-code-now-codegov) the launch [code.gov](https://code.gov/), stating    
+In 2016, then US Chief Information Officer Tony Scott [announced](https://obamawhitehouse.archives.gov/blog/2016/11/03/peoples-code-now-codegov) the launch of [code.gov](https://code.gov/), stating    
   
 > “By harnessing 21st Century technology and innovation, we’re improving the Federal Government’s ability to provide better citizen-centered services and are **making the Federal Government smarter, savvier, and more effective** for the American people...We also envision it becoming **a useful resource for State and local governments** and developers looking to tap into the Government’s code to build similar services, foster new connections with their users, and help us continue to realize the President’s vision for a 21st Century digital government.” 
 

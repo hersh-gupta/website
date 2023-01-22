@@ -1,4 +1,4 @@
 - source: project
   netlify:
-    - id: "3427c70f-28b7-4a1a-911d-3be587cef3a2"
-      url: "https://hershgupta.com"
+    - id: 3427c70f-28b7-4a1a-911d-3be587cef3a2
+      url: 'https://hershgupta.com'

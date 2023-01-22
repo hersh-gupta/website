@@ -1,6 +1,7 @@
 project:
   type: website
-
+execute:
+  freeze: auto
 website:
   title: "Hersh Gupta"
   description: "Hersh Gupta is a data scientist working in municipal government"
@@ -41,7 +42,7 @@ website:
       <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
-      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]()</span>
+      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub](https://github.com/hersh-gupta/website)</span>
 format:
   html:
     theme: 
