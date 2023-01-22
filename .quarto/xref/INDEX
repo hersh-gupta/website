@@ -1,0 +1,23 @@
+{
+  "about.qmd": {
+    "about.html": "9b021263"
+  },
+  "index.qmd": {
+    "index.html": "e7d70d67"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "1f2ba101"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "7aeba675"
+  },
+  "posts/city-government-open-source/index.qmd": {
+    "index.html": "5f657047"
+  },
+  "talks/software-development-tips-for-better-data-analysis/index.qmd": {
+    "index.html": "6de9d100"
+  },
+  "talks/index.qmd": {
+    "index.html": "7f0df48f"
+  }
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Hersh and I’m a data scientist based in Washington, DC and I love to use data to make an impact on policy, processes, and government.\nAll opinions expressed in this blog represent my own.\nReach out to me here! 👇🏾:"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "City Government Open Source Efforts, Ranked by Their Github Stats\n\n\n\n\n\n\n\nOpen Source\n\n\nGovernment\n\n\n\n\n\n\n\n\n\n\n\nDec 22, 2021\n\n\nHersh Gupta\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/city-government-open-source/index.html",
+    "href": "posts/city-government-open-source/index.html",
+    "title": "City Government Open Source Efforts, Ranked by Their Github Stats",
+    "section": "",
+    "text": "In 2016, then US Chief Information Officer Tony Scott announced the launch code.gov, stating\n\n“By harnessing 21st Century technology and innovation, we’re improving the Federal Government’s ability to provide better citizen-centered services and are making the Federal Government smarter, savvier, and more effective for the American people…We also envision it becoming a useful resource for State and local governments and developers looking to tap into the Government’s code to build similar services, foster new connections with their users, and help us continue to realize the President’s vision for a 21st Century digital government.”\n\nSince then, many cities have made the push to open source, with more and more opting to publish their code in public-facing repositories.\n\nOpen-Source Cities, Ranked\nI rank US municipal governments’ in how well they have adapted to the new landscape of open source government code, with the following caveats:\n\nLimited to the 100 largest U.S. cities by population\nOfficial government Github profiles, no private third-party or volunteer organizations\nPublic repositories only\n\n\n\n\n\n\n\n\n\nHow this works: City open-source rankings are calculated by analyzing public metrics available via the Github Repository Metrics API endpoint. Scores are calculated by combining all repository metrics, including total number of forks, watchers, and commits along with the total number of public repositories on each city’s Github profile. Code for this analysis is available on Github here."
+  },
+  {
+    "objectID": "talks/index.html",
+    "href": "talks/index.html",
+    "title": "Talks",
+    "section": "",
+    "text": "3 Tips for Better Data Analysis Using Strategies from Software Development\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "talks/software-development-tips-for-better-data-analysis/index.html#borrow-from-agile",
+    "href": "talks/software-development-tips-for-better-data-analysis/index.html#borrow-from-agile",
+    "title": "3 Tips for Better Data Analysis Using Strategies from Software Development",
+    "section": "1. Borrow from Agile",
+    "text": "1. Borrow from Agile\nAgile is a process framework that focuses on iterative development done in short bursts, called sprints\nPlanning and prioritization at the start of each sprint\nUse regular scrum meetings to conduct sprint planning, prioritization, and review\nClearly defining tasks with deliverables and timelines\nPresent hypotheses, approach(es), and aspects of data product(s)\nRetrospectives and demos at the end of each sprint\nPresent analyses/data products to stakeholders, review sprint"
+  },
+  {
+    "objectID": "talks/software-development-tips-for-better-data-analysis/index.html#use-readmes",
+    "href": "talks/software-development-tips-for-better-data-analysis/index.html#use-readmes",
+    "title": "3 Tips for Better Data Analysis Using Strategies from Software Development",
+    "section": "2. Use READMEs",
+    "text": "2. Use READMEs\nA README is documentation that tells you how to start using and understanding a new piece of software\nA typical README is a text or markdown-formatted file included with the project\nLearn how to format a README here: https://www.makeareadme.com/\nREADMEs for data products include things like usage, reproducibility, sources, and metadata"
+  },
+  {
+    "objectID": "talks/software-development-tips-for-better-data-analysis/index.html#integrate-user-experience-testing",
+    "href": "talks/software-development-tips-for-better-data-analysis/index.html#integrate-user-experience-testing",
+    "title": "3 Tips for Better Data Analysis Using Strategies from Software Development",
+    "section": "3. Integrate User Experience Testing",
+    "text": "3. Integrate User Experience Testing\nFor a widely-used data product, consider User Stories\nUser Stories are a prioritized list of tasks the user is trying to accomplish\nUser Stories help developers, analysts understand users’ needs\nIterative, human centered design\nIs the analysis interpretable? Is the way it’s presented intuitive and simple?\nPrototype analysis with user groups, have them ask questions, document findings"
+  },
+  {
+    "objectID": "talks/software-development-tips-for-better-data-analysis/index.html#tips-for-better-data-analysis",
+    "href": "talks/software-development-tips-for-better-data-analysis/index.html#tips-for-better-data-analysis",
+    "title": "3 Tips for Better Data Analysis Using Strategies from Software Development",
+    "section": "Tips for Better Data Analysis",
+    "text": "Tips for Better Data Analysis\n\nBorrow from Agile\n\nUse READMEs\n\nIntegrate User Experience Testing"
+  }
+]

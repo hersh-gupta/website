@@ -1,0 +1,55 @@
+project:
+  type: website
+
+website:
+  title: "Hersh Gupta"
+  description: "Hersh Gupta is a data scientist working in municipal government"
+  google-analytics: "UA-254735361"
+  cookie-consent: true
+  favicon: static/favicon.ico
+  open-graph: true
+  twitter-card: true
+  navbar:
+    pinned: true
+    left:
+      - text: "About"
+        href: "about.qmd"
+      - text: "Talks"
+        href: "talks"
+    right:
+      - icon: envelope
+        aria-label: email
+        href: "mailto:h.v.gupta@outlook.com"
+      - icon: twitter
+        aria-label: twitter
+        href: https://twitter.com/gupta_hersh
+      - icon: mastodon
+        aria-label: mastodon
+        href: https://mstdn.social/@hersh
+      - icon: github
+        aria-label: github
+        href: https://github.com/hersh-gupta
+      - icon: linkedin
+        aria-label: linkedin
+        href: https://www.linkedin.com/in/hershvgupta
+  search:
+    location: navbar
+    type: overlay
+  page-footer:
+    left: |
+      <span class="faux-block">{{< fa brands creative-commons >}} Hersh Gupta</span>
+      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
+    right: |
+      <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
+      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]()</span>
+format:
+  html:
+    theme: 
+      - cosmo
+      - custom.scss
+editor: source
+pagetitle: "{{< meta title >}} | {{< meta website.title >}}"
+description-meta: "{{< meta description >}}"
+author-meta: "Hersh Gupta"
+
+

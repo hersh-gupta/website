@@ -1,0 +1,243 @@
+/*-- scss:defaults --*/
+
+$theme: "hvg" !default;
+
+
+//
+// Color system
+//
+
+$white:    #f8f8f2 !default;
+$gray-100: #f1f5f9 !default;
+$gray-200: #e2e8f0 !default;
+$gray-300: #cbd5e1 !default;
+$gray-400: #94a3b8 !default;
+$gray-500: #64748b !default;
+$gray-600: #475569 !default;
+$gray-700: #334155 !default;
+$gray-800: #1e293b !default;
+$gray-900: #0f172a !default;
+$black:    #282a36 !default;
+
+
+$blue:    #6272a4 !default;
+$purple:  #bd93f9 !default;
+$pink:    #ff79c6 !default;
+$red:     #ff5555 !default;
+$orange:  #ffb86c !default;
+$yellow:  #f1fa8c !default;
+$green:   #50fa7b !default;
+$teal:    #20c997 !default;
+$cyan:    #8be9fd !default;
+
+$primary:   $pink !default;
+$secondary: $gray-700 !default;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $orange !default;
+$danger:    $red !default;
+$light:     $gray-400 !default;
+$dark:      $black !default;
+
+// Fonts
+
+
+$font-family-sans-serif: "Source Sans Pro" !default;
+$font-family-serif: "Source Serif Pro" !default;
+$headings-font-family: "Source Sans Pro" !default;
+$headings-font-weight: 600 !default;
+
+$navbar-font-family: "Source Sans Pro" !default;
+$toc-font-family: "Source Sans Pro" !default;
+$footer-font-family: "Source Sans Pro" !default;
+
+// Body
+$body-color: $gray-900 !default;
+
+// Links
+$link-color: $blue !default;
+$link-decoration: none !default;
+$link-hover-color: $red !default;
+$link-hover-decoration: underline !default;
+
+// Inline code
+$code-bg: $gray-200 !default;
+$code-color: $gray-900 !default;
+
+// Code copy
+$btn-code-copy-color-active: $green !default;
+
+// TOC
+$toc-color: $green;
+$toc-font-size: 1em;
+
+// Navbar
+$navbar-bg: $gray-900 !default;
+$navbar-fg: $white !default;
+$navbar-hl: $green !default;
+
+// Footer
+$footer-bg: $gray-900 !default;
+$footer-fg: $gray-300 !default;
+
+/*-- scss:rules --*/
+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" !default;
+
+@if $web-font-path {
+    @import url($web-font-path);
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+
+.home {
+    .quarto-title-banner {
+        margin-bottom: 0;
+    }
+}
+
+
+// Shrink blocks of code
+pre.text, pre.sourceCode, .cell-output pre {
+    font-size: 0.775em;
+}
+
+.navbar {
+    font-family: $navbar-font-family;
+    
+    .navbar-title {
+      font-weight: 800;
+    }
+}
+
+// Put all the icons in a single row in the hamburger menu
+.navbar-nav.navbar-nav-scroll.ms-auto {
+    flex-direction: row;
+}
+
+#TOC {
+    font-family: $toc-font-family;
+    padding-bottom: 0.1em;
+
+    .active {
+        font-weight: 400;
+    }
+
+    #toc-title {
+        font-weight: 600;
+    }
+}
+
+.sidebar nav[role="doc-toc"]>ul li a {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+#quarto-margin-sidebar {
+    .quarto-listing-category-title {
+        margin-left: 0.5em;
+    }
+
+    .quarto-listing-category {
+        font-family: $toc-font-family;
+        font-weight: 500;
+        font-size: 1em;
+        line-height: 1.1;
+        padding-left: 0.6rem;
+        margin-left: 0.5em;
+        border-left: 1px solid $gray-200;
+
+        .category {
+            padding-bottom: 0.5rem;
+        }
+
+        .active {
+            font-weight: 400;
+            color: $orange;
+        }
+
+        .quarto-category-count {
+            font-weight: 200;
+            font-size: 0.8em;
+            color: $gray-600;
+        }
+    }
+}
+
+
+.nav-footer {
+    align-items: flex-start;  // Align all flex items to the top
+    flex-wrap: wrap;
+    border: 0 !important;
+    min-height: 3em;
+    font-family: $footer-font-family;
+
+    a {
+        color: $green;
+    }
+
+    .faux-block {
+        display: block;
+        padding-bottom: 0.4em;
+    }
+
+
+
+    // In the default Quarto template, .nav-footer-center has position: absolute 
+    // turned on, which makes the div not be a flex item
+    // This changes that so that it *is* a flex item
+    .nav-footer-center {
+        text-align: center;
+        position: inherit;
+        margin-top: 0;
+
+        @media (max-width: map-get($grid-breakpoints, md)) {
+            margin-top: 0.5em;
+            margin-bottom: 1.5em;
+        }
+    }
+
+    // When the screen is medium or smaller, make each footer chunk be 100% width 
+    // and centered; otherwise make them be 33% width and left/right/centerd
+    .nav-footer-left,
+    .nav-footer-right,
+    .nav-footer-center {
+        text-align: center;
+        width: 100%;
+        min-height: 2em;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        .nav-footer-left {
+            text-align: left;
+        }
+
+        .nav-footer-right {
+            text-align: right;
+        }
+
+        .nav-footer-left,
+        .nav-footer-right,
+        .nav-footer-center {
+            flex: 1 1 33%;
+        }
+    }
+}
+
+#title-block-header {
+    .quarto-title-banner {
+        font-family: $headings-font-family;
+        
+        .description {
+            font-size: 1.1em;
+            margin-top: 1em !important;
+        }
+    }
+}

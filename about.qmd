@@ -1,0 +1,23 @@
+---
+title: "About Me"
+# image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: mastodon
+      text: Mastodon
+      href: https://mstdn.social/@hersh
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/hershvgupta
+    - icon: github
+      text: Github
+      href: https://github.com/hersh-gupta
+---
+
+My name is Hersh and I'm a data scientist based in Washington, DC and I love to use data to make an impact on policy, processes, and government. 
+
+All opinions expressed in this blog represent my own.
+
+Reach out to me here! 👇🏾:
+

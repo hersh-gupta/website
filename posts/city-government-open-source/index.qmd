@@ -1,0 +1,52 @@
+---
+title: "City Government Open Source Efforts, Ranked by Their Github Stats"
+author: "Hersh Gupta"
+date: "2021-12-22"
+categories: [Open Source, Government]
+image: "cover.webp"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(DT)
+library(leaflet)
+library(htmltools)
+
+cities_table <- read_rds("data/cities_table.rds")
+```
+
+
+In 2016, then US Chief Information Officer Tony Scott [announced](https://obamawhitehouse.archives.gov/blog/2016/11/03/peoples-code-now-codegov) the launch [code.gov](https://code.gov/), stating    
+  
+> “By harnessing 21st Century technology and innovation, we’re improving the Federal Government’s ability to provide better citizen-centered services and are **making the Federal Government smarter, savvier, and more effective** for the American people...We also envision it becoming **a useful resource for State and local governments** and developers looking to tap into the Government’s code to build similar services, foster new connections with their users, and help us continue to realize the President’s vision for a 21st Century digital government.” 
+
+
+Since then, many cities have made the push to open source, with more and more opting to publish their code in public-facing repositories. 
+
+
+### Open-Source Cities, Ranked
+
+I rank US municipal governments' in how well they have adapted to the new landscape of open source government code, with the following caveats:
+
+* Limited to the 100 largest U.S. cities by population 
+* Official government Github profiles, no private third-party or volunteer organizations
+* Public repositories only
+
+
+```{r, echo=F}
+cities_table %>%
+datatable(colnames = c('City', 'State',  'Grade', 'Public Repos', 'Forks', 'Watchers', 'Commits in the Last Year'),
+          rownames = F, 
+          options = list(pageLength = 100,
+                         dom = 'frt',
+                         autoWidth = TRUE,
+                         scrollY = 600,
+                         scroller = TRUE), fillContainer = T, extensions = c('Scroller'),escape = FALSE)
+
+```
+  
+  ***
+
+<sup>**How this works:** City open-source rankings are calculated by analyzing public metrics available via the [Github Repository Metrics](https://docs.github.com/en/rest/reference/repository-metrics) API endpoint. Scores are calculated by combining all repository metrics, including total number of forks, watchers, and commits along with the total number of public repositories on each city's Github profile. Code for this analysis is available on Github [here](https://github.com/hersh-gupta/cities-open-code).</sup>

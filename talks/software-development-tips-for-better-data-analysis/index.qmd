@@ -1,0 +1,60 @@
+---
+title: "3 Tips for Better Data Analysis Using Strategies from Software Development"
+format:
+  revealjs:
+    incremental: true
+editor: source
+---
+
+
+**Similar to how developers produce software, analysts produce _data products_**
+
+**Data products include dashboards, analyses, and data apps**
+
+## 1. Borrow from Agile
+
+Agile is a process framework that focuses on iterative development done in short bursts, called _sprints_  
+
+**Planning and prioritization at the start of each sprint** 
+  
+Use regular scrum meetings to conduct sprint planning, prioritization, and review
+
+**Clearly defining tasks with deliverables and timelines**    
+
+Present hypotheses, approach(es), and aspects of data product(s)
+
+**Retrospectives and demos at the end of each sprint** 
+
+Present analyses/data products to stakeholders, review sprint
+
+
+## 2. Use READMEs
+
+
+**A README is documentation that tells you how to start using and understanding a new piece of software**
+
+**A typical README is a text or markdown-formatted file included with the project**
+
+Learn how to format a README here: https://www.makeareadme.com/
+
+**READMEs for data products include things like usage, reproducibility, sources, and metadata** 
+
+## 3. Integrate User Experience Testing
+
+**For a widely-used data product, consider User Stories**
+
+  User Stories are a prioritized list of tasks the user is trying to accomplish
+
+  User Stories help developers, analysts understand users’ needs
+	
+**Iterative, human centered design**
+
+  Is the analysis interpretable? Is the way it’s presented intuitive and simple?
+
+  Prototype analysis with user groups, have them ask questions, document findings
+
+## **Tips for Better Data Analysis**
+
+1. Borrow from Agile  
+2. Use READMEs  
+3. Integrate User Experience Testing
