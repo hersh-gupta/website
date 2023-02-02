@@ -6,7 +6,7 @@ website:
   title: "Hersh Gupta"
   description: "Hersh Gupta is a data scientist working in municipal government"
   google-analytics: "UA-254735361"
-  cookie-consent: true
+  cookie-consent: false
   favicon: static/favicon.ico
   open-graph: true
   twitter-card: true
