@@ -1,0 +1,30 @@
+---
+title: "How government analytics teams can embrace #PublicMoneyPublicCode"
+author: "Hersh Gupta"
+date: "2023-04-02"
+categories: [Open Source, Government]
+image: "cover.webp"
+---
+
+The push for [Public Money, Public Code](https://publiccode.eu/en/) started in Europe with the aim that government software developed for the public sector should be made publicly available via a Free and Open Source Software (FOSS) license. In fact, there are [economic, moral, transparency, and participatory related reasons](https://ben.balter.com/2015/11/23/why-open-source/) why governments should use and publish open source software. Recently, [bipartisan legislation](https://www.hsgac.senate.gov/media/majority-media/peters-and-portman-introduce-bipartisan-legislation-to-help-secure-open-source-software_/) has been introduced in the US Senate that would, among other things, "codify open source software as public infrastructure."
+
+Much of the focus of Public Money, Public Code has been to allow government agencies to develop and contribute to open source software applications. Government analytics teams, on the other hand, do not consider themselves software developers. However, the same way that scientific research funded via public grants is made publicly available, government analytics teams can opt to use, promote, and orchestrate with open source tools. Thus, they can reap the same benefits as other organizations that have chosen to be a part of the open source community.
+
+A "data stack" is a set of interoperable tools used for analytic data work. The table below shows open source alternatives to proprietary analytics tools:
+
+| **Purpose**                      | **Proprietary Tools**           | **Open Source Tools**     |
+|--------------------------|-------------------------|---------------------|
+| Infrastructure Orchestration     | Ansible                         | Docker, Kubernetes        |
+| Research                         | STATA, SAS, SPSS                | R, Python                 |
+| Business Intelligence (Internal) | Tableau, PowerBI, Microstrategy | Apache Superset           |
+| Dashboards (External)            | Tableau, ArcMap, PowerBI        | JavaScript                |
+| GIS                              | ArcGIS Desktop                  | PostGIS, Apache Sedona    |
+| ETL/Pipelines                    | Informatica, Tableau Prep       | Airflow, Dagster, Meltano |
+| Analytical Query Engine          | PL/SQL                          | Trino                     |
+| Real-Time Analytics              | ?                               | Apache Pinot              |
+
+: OSS Alternatives
+
+Using an open source data stack can help government analytics teams embrace #PublicMoneyPublicCode. Many proprietary/paid/"Enterprise" tools will claim to be more stable and secure than open source tools. However, [open source tools are not inherently insecure](https://ben.balter.com/2014/09/22/open-source-is-not-insecure/), as open source technology is becoming the bedrock of more and more Enterprise tools.
+
+The cash cow of companies that develop closed-source software is the generalization that "government users are more risk-averse and will stick with closed source software." This is best refuted by the fact that the US Department of Defense has published a [Frequently Asked Questions page](https://dodcio.defense.gov/open-source-software-faq/) on open source software and states "Some OSS is very secure, while others are not; some proprietary software is very secure, while others are not. Each product must be examined on its own merits." As the US Department of Defense has [publicly embraced OSS,](https://code.mil/) so too can government analytics teams at all levels of government.

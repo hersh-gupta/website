@@ -19,5 +19,8 @@
   },
   "talks/index.qmd": {
     "index.html": "7f0df48f"
+  },
+  "posts/government-analytics-oss/index.qmd": {
+    "index.html": "7e4764f3"
   }
 }
