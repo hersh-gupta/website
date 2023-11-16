@@ -49,7 +49,7 @@ format:
       - cosmo
       - custom.scss
 editor: source
-pagetitle: "{{< meta title >}} | {{< meta website.title >}}"
+pagetitle: "{{< meta title >}} | Hersh Gupta"
 description-meta: "{{< meta description >}}"
 author-meta: "Hersh Gupta"
 
