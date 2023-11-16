@@ -1,0 +1,27 @@
+---
+title: "How Cities Can Create Better Data Interfaces: Lessons Learned from Redesigning RentSmart Boston"
+author: "Hersh Gupta"
+date: "2023-11-15"
+categories: [Open Source, Government]
+image: "cover.webp"
+---
+
+![](cover.webp)
+
+tl;dr: redesigning the Boston RentSmart dashboard helped me understand when and why cities should choose to build custom web interfaces for datasets.
+
+The early 2010s featured a surge of "open data" -- from government datasets to public research. But while this wealth of data has potential value, a question remains around how to make it truly useful and accessible.
+
+On one hand, data analysts rely on tools to efficiently process datasets, but these rarely enable building new interfaces. They use basic publishing tools to share findings. Web developers, on the other hand, focus on crafting engaging interfaces but often lack access to rich datasets. There's a divide between these roles - one cares about data maintenance, the other about display. Bridging this gap between data and design experts is key to unlocking the promise of open data for the public good.
+
+To personally bridge this gap in my own skillset, I learned enough web development to redesign the City of Boston's RentSmart Dashboard. For some context, The City of Boston provides compiled data on housing violations, building violations, enforcement violations, housing complaints, sanitation requests, and/or civic maintenance requests. The City releases this data through [Analyze Boston](https://data.boston.gov/) and they provide a [Tableau dashboard](https://www.boston.gov/departments/analytics-team/rentsmart-boston) to allow users to search the data.
+
+I [redesigned](https://github.com/hersh-gupta/rent-smart-dash) this dashboard in a modern web framework, with similar functionality to the original one. Here's what I learned:
+
+1.  Investing time in custom UI and UX is worthwhile if you care about user experience. Building an interface from scratch takes more effort upfront, but offers far more flexibility to craft an intuitive, user-friendly product. Off-the-shelf BI tools often lack the polish and refinements of a bespoke web app.
+
+2.  Web development scales better long-term than relying solely on point-and-click BI tools. Web apps can be optimized for performance, accessibility, SEO, and more through standard practices. BI tools don't often receive this level of optimization. Additionally, thanks to reusable code patterns, each new web app moves faster than starting a dashboard from scratch. The reproducibility of code compounds over time.
+
+3.  Web frameworks promote collaboration and community growth. By using open source tools and publishing my code, I can get feedback, bug reports, and contributions from other developers. The open source community helps improve the quality and security of the product through peer review and knowledge sharing. Proprietary BI tools tend to have less community support.
+
+By diving into web development to create a more engaging open data resource, I gained hands-on experience bridging the gap between my data analysis skills and ability to build great interfaces. Custom web development ultimately creates a better user experience and offers more scalability than inflexible, out-of-the-box BI tools alone.
