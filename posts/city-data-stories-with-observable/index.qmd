@@ -1,0 +1,22 @@
+---
+title: "Observable’s New Framework: A Better Way for Cities to Tell Data Stories"
+author: "Hersh Gupta"
+editor: visual
+date: "2023-11-15"
+categories: [Open Source, Government]
+image: "cover.webp"
+---
+
+[![Testing Observable 2.0 with Boston's 311 Data](/posts/city-data-stories-with-observable/cover.webp)](https://boston-311-dash.netlify.app/)
+
+Cities today want to leverage their vast amounts of open data to tell compelling stories that inform, optimize operations, and engage citizens. However, it is too expensive for most cities to invest in entire web teams to create customized dashboards. The answer lies in open source software and embracing code. **Open source options allow cities to save significantly on software licensing costs, while a code based approach facilitates reproducibility and, thus, economies of scale.**
+
+One open source framework that is gaining popularity for data applications is Observable. Observable combines the power of languages like Python, R, and SQL that data scientists rely on with JavaScript, the native language of the web. This allows cities to create highly dynamic and interactive data visualizations that live natively on the web, removing the need for proprietary business intelligence or visualization software.
+
+With [**Observable 2.0**](https://observablehq.com/), interfaces are built locally and available to deploy cites\' own servers. This way, users don\'t have to transmit sensitive data to third-party servers. Instead, they maintain full control over security and privacy while still producing powerful analytics.
+
+![Which URL is SEO optimized? Which would you expect to load more quickly?](/posts/city-data-stories-with-observable/screenshot-browser.png){fig-align="center"}
+
+The new Observable Framework is also extremely customizable, enabling cities to build precisely the dashboards and data stories they wish to tell, optimized specifically for their use cases. Compared to traditional government software options like ArcGIS and Tableau, Observable provides better performance at a fraction of the cost. With reusable data analysis and visualization components, cities can quickly build multiple data applications on top of the same foundational codebase. This modular approach paired with the latest web development techniques makes Observable a cost-effective way for cities to tell a story with their data.
+
+By embracing open source software like Observable, cities access ready-made tools for success while benefiting from standardized best practices. **Observable allows cities to tell rich, interactive analytic narratives with their public sector data in a secure, performant manner that simply isn\'t possible with other approaches.** Any city looking to innovate with data visualization and storytelling would do well to explore this new framework.
