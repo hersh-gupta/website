@@ -2,12 +2,12 @@
 title: "Observable’s New Framework: A Better Way for Cities to Tell Data Stories"
 author: "Hersh Gupta"
 editor: visual
-date: "2023-11-15"
+date: "2024-02-12"
 categories: [Open Source, Government]
 image: "cover.webp"
 ---
 
-[![Testing Observable 2.0 with Boston\'s 311 Data](/posts/city-data-stories-with-observable/cover.webp)](https://boston-311-dash.netlify.app/)
+[![Testing Observable 2.0 with Boston's 311 Data](/posts/city-data-stories-with-observable/cover.webp)](https://boston-311-dash.netlify.app/)
 
 Cities today want to leverage their vast amounts of open data to tell compelling stories that inform, optimize operations, and engage citizens. However, it is too expensive for most cities to invest in entire web teams to create customized dashboards. The answer lies in open source software and embracing code. **Open source options allow cities to save significantly on software licensing costs, while a code based approach facilitates reproducibility and, thus, economies of scale.**
 
