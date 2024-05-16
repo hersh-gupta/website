@@ -1,5 +1,9 @@
 ---
 title: "Why Most State and Local Generative AI Efforts Won’t Be as Impactful as Promised"
+author: "Hersh Gupta"
+date: "2024-05-16"
+categories: [Government, AI]
+image: "cover.webp"
 ---
 
 ![](/posts/state-local-gov-unready-for-genAI/cover.webp){fig-align="center" width="361"}
