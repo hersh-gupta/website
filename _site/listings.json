@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/state-local-gov-unready-for-genAI/index.html",
       "/posts/city-data-stories-with-observable/index.html",
       "/posts/redesigning-rent-smart-boston/index.html",
       "/posts/government-analytics-oss/index.html",

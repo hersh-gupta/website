@@ -1,0 +1,27 @@
+---
+title: "Why Most State and Local Generative AI Efforts Won’t Be as Impactful as Promised"
+---
+
+![](/posts/state-local-gov-unready-for-genAI/cover.webp){fig-align="center" width="361"}
+
+I\'m a data scientist working on AI in city government. I think hype around generative AI in the public sector is causing more issues than it promises to solve.
+
+Developments in generative artificial intelligence seem promising in improving government operations, like streamlining routine bureaucratic tasks or summarizing documents for information-seekers. **However, the reality is that most state and local governments lack the expertise, safeguards, and tech leadership to implement products or processes that integrate generative AI.**
+
+Despite the unpreparedness, cities are jumping on the generative AI bandwagon. It\'s spurred by technology managers falling for flashy claims of cutting-edge public sector innovations from B2G vendors.
+
+A common trope in government is that government technology leaders don\'t understand the \"business\" of government, i.e., they are too far removed from the day-to-day of government services. This leads to AI chatbots being seen by these leaders as a sort of panacea to most government challenges, without understanding the nuances of a given problem.
+
+It\'s complicated further by the fact that few, if any, government technology managers deeply understand the underlying tech of generative AI. The implication here is that, while the typical gov tech leader is aware that genAI has drawbacks, leaders lack the knowledge to adequately measure or mitigate them. New York City\'s recent [genAI scandal](https://apnews.com/article/new-york-city-chatbot-misinformation-6ebc71db5b770b9969c906a7ee4fae21) serves as a prime example.
+
+**Because of this, the public should be more skeptical of the people in government who push generative AI technologies without understanding them or the problems they\'re actually able to solve.**
+
+Rather than chasing the latest AI innovations, govtech managers would be better served prioritizing foundational data management practices - establishing centralized governance, systematizing data collection/operations, and thoughtfully designing core IT infrastructure.
+
+However, hype around AI and other advanced technologies creates pressure on local leaders to implement them before doing the foundational work. **The allure of AI can push limited resources toward shiny new projects rather than the admittedly boring work of improving core systems and infrastructure.**
+
+If asked whether they should hire another database administrator or an procure some AI software, too many gov leaders would be mistakenly convinced the smarter investment would be expanding AI capacity.
+
+In their rush to keep up with innovation for innovation\'s sake, many states and cities will try to leapfrog over essential steps and end up with serious consequences for the public and government operations. Potentially useful but unreliable AI systems, when deployed without appropriate forethought, will only amplify existing operational inefficiencies rather than resolving them.
+
+Real innovation demands some level of care. Resisting the temptation to compulsively chase every shiny new AI object will yield more substantial, long-term dividends for residents.
