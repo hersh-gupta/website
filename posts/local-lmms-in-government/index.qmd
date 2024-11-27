@@ -1,0 +1,85 @@
+---
+title: "Local Vision-Language Model Experimentation for Public Sector Use Cases"
+author: "Hersh Gupta"
+editor: visual
+date: "2024-11-27"
+categories: [Open Source, Government, AI]
+image: "cover.webp"
+---
+
+Computer vision has evolved many times, from basic [handwriting pattern recognition](https://en.wikipedia.org/wiki/MNIST_database) to [object detection](https://en.wikipedia.org/wiki/Object_detection). Now, with the emergence of [Large Multimodal Model (LMM)](https://en.wikipedia.org/wiki/Multimodal_learning), it’s experiencing another dramatic transformation. LMMs can now process images and generate descriptions, insights, analysis and even new prompts for other models. Large (and even mid-sized) tech companies have the resources to deploy these models in the cloud and support them with teams dedicated to their upkeep. Government, however, has long lacked this luxury – [there are very few ML/AI teams in government](https://www.nextgov.com/artificial-intelligence/2023/11/people-problem-behind-governments-ai-ambitions/392212/), and where they exist are in already well-funded agencies and organizations. Therefore, there’s a compelling case for experimenting with these models while taking the lowest-cost, lowest-risk approach.
+
+## Vision Models in Government
+
+Governments sit on goldmines of visual data: from infrastructure inspection photos to document processing queues, from aerial imagery to camera feeds. These are another form of administrative data, the utility of which often gets overlooked. The potential for automation and efficiency gains is plenty. For example, a vision model could rapidly assess road damage from maintenance photos, extract data from handwritten forms, or analyze aerial imagery for urban planning.
+
+While the public sector would benefit from any of these applications, it often lacks the technical resources to implement them effectively. Government agencies typically employ few experts or engineers compared to the private sector, and the collaboration between technical teams and services designers is not as tightly coupled in the public sector as it is in the private sector.
+
+## The Case for Local Experimentation
+
+Cloud platform LMM offerings, while powerful, come with significant costs that can strain public sector budgets. Each [Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html) or [AI Vision](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview) API call adds up, making experimentation and proof-of-concept development prohibitively expensive. This is compounded by the fact that government agencies do not have large, experienced engineering teams, so they end up spend more time spinning their wheels while accruing these costs.
+
+This is where local deployment of models becomes a practical alternative. Local vision models, specifically, offer several advantages:
+
+1.  Cost-effective experimentation without charges for each inference/query
+2.  Complete control over data privacy and security
+3.  Freedom to modify and fine-tune models for specific use cases
+
+There are a few downsides: you can’t use proprietary models (GPT/Claude are off the table), you need to have the right hardware (but honestly, if you’re already buying a \$2K computer for a new hire, might as well throw in a GPU), and it’s not as easy as point-and-click interfaces.
+
+## LMM Public Sector Applications
+
+The applications for vision models in government services are varied:
+
+-   **Generating Service Tickets:** Analyzing images of incidents or areas needing service and preparing reports to 311
+-   **Infrastructure Maintenance:** Analyzing photos of parks, roads, and buildings to identify maintenance needs
+-   **Environmental Monitoring:** Processing satellite and drone imagery to track environmental changes
+-   **Accessibility Services:** Providing image descriptions for visually impaired citizens accessing government websites
+
+## Example: Open Source Vision Intelligence with LLaVA
+
+There are hundreds of open-source options for image-to-text models. However, [LLaVA](https://llava-vl.github.io/) is one that stands out for its capabilities and accessibility. Built on Meta's [LLaMA language model](https://www.llama.com/), LLaVA uses specialized components to translate images into a format the underlying language model can process, allowing it to have natural conversations about visual content.
+
+[LLaVA-NeXT](https://llava-vl.github.io/blog/2024-01-30-llava-next/) represents a significant step forward in making local vision models more accessible. It uses the latest family of LLaMA models, "with improved reasoning, OCR, and world knowledge."
+
+## Proof-of-Concept Experiments
+
+I tested LLaVA-NeXT on two common municipal workflows: 311 service requests and playground safety inspections. Both experiments used specialized system prompts to structure the model's analysis.
+
+### 311 Service Request Processing
+
+The model converted photos into structured tickets by extracting location data, classifying issues, and generating detailed descriptions.
+
+![Testing LLaMA-NeXT with picture of traffic in lmstudio.ai](images/Screenshot%202024-11-27%20143107.png){fig-align="center" width="1296"}
+
+In testing with traffic obstruction photos, it correctly identified violations and provided comprehensive situation assessments matching human operator quality.
+
+### Playground Safety Inspections
+
+For park maintenance, the model performed systematic equipment evaluations. When analyzing playground components, it reliably assessed material condition, structural integrity, and potential safety hazards.
+
+![Testing LLaMA-NeXT with picture of a playground in lmstudio.ai](images/Screenshot%202024-11-27%20145240.png)
+
+The output followed given inspection protocols, providing maintenance teams with actionable documentation.
+
+### Key Findings
+
+Local deployment of LLaVA-NeXT proved effective, with several advantages:
+
+-   Fast processing time on consumer hardware (my laptop’s GPU)
+
+-   Consistent output formatting suitable for existing workflows
+
+-   Successful domain adaptation through prompt engineering
+
+-   No additional training required for municipal use cases
+
+These experiments demonstrate that local LMMs can effectively augment government workflows while maintaining control over data and infrastructure.
+
+## Conclusion
+
+The democratization of vision model technology through local deployment options opens exciting possibilities for public sector innovation. While cloud-based solutions will continue to play a crucial role, the ability to experiment locally removes significant barriers to entry for government agencies looking to improve their services.
+
+By starting with focused proof-of-concept projects using tools like LLaVA-NeXT, public sector organizations can build the expertise and confidence needed to implement these transformative technologies at scale. The key is to begin with manageable experiments that demonstrate clear value while building internal capacity for larger implementations.
+
+*Cover image (c) [karyative](https://www.flaticon.com/authors/karyative), [SmashIcons](https://www.flaticon.com/authors/smashicons)*
