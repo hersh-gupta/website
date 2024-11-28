@@ -4,9 +4,9 @@ title: "About Me"
 about:
   template: jolla
   links:
-    - icon: mastodon
-      text: Mastodon
-      href: https://mstdn.social/@hersh
+    - icon: bluesky
+      text: "{{< fa brands bluesky >}} Bluesky"
+      href: https://bsky.app/profile/hershgupta.com
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/hershvgupta
@@ -15,9 +15,8 @@ about:
       href: https://github.com/hersh-gupta
 ---
 
-My name is Hersh and I'm a data scientist based in Washington, DC and I love to use data to make an impact on policy, processes, and government. 
+My name is Hersh and I'm a data scientist based in Boston, MA and I love to use data to make an impact on policy, processes, and government. 
 
 All opinions expressed in this blog represent my own.
 
 Reach out to me here! 👇🏾:
-
