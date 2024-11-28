@@ -5,7 +5,7 @@ execute:
 website:
   title: "Hersh Gupta"
   description: "Hersh Gupta is a data scientist working in municipal government"
-  google-analytics: "UA-254735361"
+  google-analytics: "G-GXXLWF1R58"
   cookie-consent: false
   favicon: static/favicon.ico
   open-graph: true
