@@ -9,10 +9,12 @@ execute:
   eval: false
 ---
 
+```{=html}
 <!-- ![Smart 311 Concept](smart-311-cover.png){width=600 fig-align="center"}
  -->
- 
-Every day, residents of any city submit hundreds of 311 requests for everything from broken sidewalks to illegal parking. These systems are important in responding to a city's service requests.
+```
+
+Every day, residents of any given city might submit hundreds of 311 requests for everything from broken sidewalks to illegal parking. These systems are important in responding to a city's service requests.
 
 The process seems simple: a resident reports an issue, and the appropriate department responds. But behind the scenes, 311 employees have to constantly recategorize misclassified requests and merge duplicate reports about the same problem.
 
@@ -24,7 +26,7 @@ Artificial intelligence—specifically large multimodal models (LMMs)—could tr
 
 It’s not just about technological efficiency—it's about creating tangible improvements in city services. When a broken traffic signal is reported, accurate categorization means faster response times. When multiple residents report the same fallen tree, automatic merging ensures resources aren't split across duplicate tickets.
 
-Implementing LMMs in 311 systems would be like your phone’s autocorrect, but for service requests. As users are submitting requests, it would:
+Implementing LMMs in 311 systems would be like a phone’s autocorrect, but for service requests. As users are submitting requests, it would:
 
 -   Suggest the correct department classification
 
@@ -36,7 +38,8 @@ Implementing LMMs in 311 systems would be like your phone’s autocorrect, but f
 
 Ideally, users would be able to verify the suggestions before submitting their requests, so there’s less danger of [AI slop](https://en.wikipedia.org/wiki/AI_slop) ending up in 311 systems.
 
-**Ok, so how would this work?**
+
+**How does this work?**
 
 A big problem with integrating AI systems is getting consistent outputs. That’s why the folks at [StanfordNLP](https://github.com/stanfordnlp) have built [DSPy](https://dspy.ai/) – a framework for writing programs for language model workflows.
 
@@ -122,6 +125,45 @@ The full implementation, along with example code and detailed documentation, is 
 
 What’s great about DSPy is its flexibility and consistency. It’s able to handle complex prompt engineering and chain-of-thought reasoning behind the scenes, letting us build a reliable system for 311 users.
 
+**A brief example**
+
+To demonstrate this concept, we can use a real-world example. Here's a request from my city's 311 <https://311.boston.gov/tickets/101005820254>:
+
+![](images/paste-1.png){width="715"}
+
+This is what the [unformatted request](https://311.boston.gov/open311/v2/requests/101005820254.json) looks like (i.e. what is received before it turns into a nice webpage):
+
+``` json
+[
+  {
+    "service_request_id": "101005820254",
+    "service_name": "Requests for Street Cleaning",
+    "service_code": "Public Works Department:Street Cleaning:Requests for Street Cleaning",
+    "description": "Garbage on sidewalk",
+    "address": "19 Worcester St, Roxbury, Ma, 02118",
+    "media_url": "https://spot-boston-res.cloudinary.com/image/upload/v1734138056/boston/production/x1vhcizd7nvzb7xdzkfe.jpg#spot=e8762677-4564-41c3-b58b-3ddd206801cb"
+  }
+]
+```
+
+The model workflow takes that request, considers the image and text, and returns the following:
+
+``` json
+{
+  "original_service": "Requests for Street Cleaning",
+  "recommended_service": "Requests for Street Cleaning",
+  "updated_description": "The area is littered with trash and debris. A blue box is present on the sidewalk by 19 Worcester St, Roxbury, Ma, 02118, which needs to be removed",
+  "emergency": false,
+  "image_verified": true,
+  "confidence": 0.85,
+  "rationale": "The image shows a sidewalk with litter scattered around, which is consistent with the current service classification of \"Requests for Street Cleaning\". The presence of trash on the sidewalk indicates that it requires attention from the city's street cleaning services to maintain cleanliness and hygiene in public spaces.",
+  "service_request_id": "101005820254",
+  "address": "19 Worcester St, Roxbury, Ma, 02118",
+}
+```
+
+It verified the correct classification, updated the description, and correctly identified that it was not an emergent issue. It also provided a more detailed rationale and rated how confident it was with the updated classification and description.
+
 **Here’s what to consider**
 
 With any AI-powered technology, cities need to approach them carefully. Public trust is essential and any system that uses AI needs to be accurate and transparent. Here, cities would audit it for bias and performance reviews should be part of any implementation plan.
@@ -130,4 +172,4 @@ Also, while compute costs continue to drop, cities should weigh the benefits of 
 
 The goal, of course, isn’t to replace human judgment but to augment it, allowing 311 staff to focus on what matters most, responding the requests from residents.
 
-By weighting the tradeoffs of AI thoughtfully, cities can build systems that are more efficient and responsive to community needs.
+By weighing the tradeoffs of AI thoughtfully, cities can build systems that are more efficient and responsive to community needs.
