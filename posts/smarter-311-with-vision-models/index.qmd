@@ -4,6 +4,7 @@ author: "Hersh Gupta"
 editor: visual
 date: "2024-12-14"
 categories: [Government, AI, LMM]
+description: "Enhance city service requests with AI"
 image: "smart-311-cover.png"
 execute:
   eval: false

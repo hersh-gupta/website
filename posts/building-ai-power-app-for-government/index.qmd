@@ -1,0 +1,55 @@
+---
+title: "What I Learned Building CityUpdate: An AI-Powered Data Product for Public Sector Transparency"
+author: "Hersh Gupta"
+editor: visual
+date: "2025-02-12"
+categories: [Government, AI, LLM]
+description: "What I learned building CityUpdate, an AI powered data product for the public sector"
+image: "cover.png"
+execute:
+  eval: false
+---
+
+[![CityUpdate](cover.png)](https://hersh-gupta.github.io/cityupdate/){width=600 fig-align="center"}
+
+tl;dr I built [CityUpdate Boston](https://hersh-gupta.github.io/cityupdate/) with the goal to make Boston's municipal performance metrics accessible and understandable to every resident using Large Language Models (LLMs). I learned a lot about where the real barriers to developing with AI are in government.
+
+**The Public Sector AI Challenge**
+
+Building AI products for government presents unique challenges. Unlike private sector business apps (think [Microsoft 365's Copilot](https://adoption.microsoft.com/en-us/copilot/)), public sector deployments face more scrutiny and have to clear a higher bar for reliability and transparency. Which makes sense- when we're dealing with public services and taxpayer resources, we need to be extra careful about how we implement AI solutions.
+
+**Choosing to Build**
+
+A key decision in any tech project is whether to build or buy a solution (refer to [18F's De-risking Guide](https://guides.18f.gov/derisking-government-tech/) for more information). For CityUpdate, building the system proved to be the better choice for several reasons:
+
+1. **Risk Management**: Building in-house gave me complete control over deployment.
+2. **Testing & Evaluation**: I could implement thorough testing, evaluation, and verification processes.
+3. **Deployment Control**: Full authority over go/no-go decision.
+4. **Cost Efficiency**: The entire system costs only about $0.02 per day to run queries. Compare this to the 10s of thousands contractors charge government to build apps.
+
+**The Foundation: Quality Data Engineering**
+
+One major advantage I had was Boston's existing robust data engineering pipelines. This highlights a crucial point about GenAI projects: they're only as good as the data they're built on. The city's established infrastructure provided reliable, high-quality data - an essential foundation for any AI system.
+
+Development was surprisingly swift - the entire build took just two days. This efficiency was possible because I was building on top of solid data infrastructure rather than starting from scratch.
+
+**Transparency and Evaluation**
+
+From the start, I wanted to bake in being transparent about:
+
+1. How the system generates its summaries
+2. The evaluation methods I used
+3. What makes it to publication and what doesn't
+
+I implemented different types of evaluations to ensure the output meets defined standards for public consumption. This rigorous approach helps maintain trust and reliability in the system.
+
+**Key Takeaways**
+
+1. **Data Quality is Non-Negotiable**: Good AI systems require good data and solid data engineering
+2. **Cost Management**: Small-scale AI projects can be surprisingly affordable when well-designed
+3. **Transparency First**: Being open about AI generation and evaluation builds trust
+4. **Build vs Buy**: Sometimes building in-house provides better control and risk management
+
+The success of CityUpdate demonstrates that with careful planning, solid data foundations, and a commitment to transparency, cities can build AI-powered tools that genuinely serve the public good. It's a small but significant step toward making government performance metrics more accessible to everyone.
+
+_This project represents an early exploration of how AI can enhance government transparency and public understanding. While the investment was modest, the potential impact on civic engagement and government accountability is substantial._
