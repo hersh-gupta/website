@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/leaving-public-service/index.html",
       "/posts/building-ai-power-app-for-government/index.html",
       "/posts/smarter-311-with-vision-models/index.html",
       "/posts/local-lmms-in-government/index.html",

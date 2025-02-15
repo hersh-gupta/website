@@ -1,0 +1,43 @@
+---
+title: "I Didn't Leave Public Service, Public Service Left Me: Why Inefficient Government Hiring Processes Drove Me Away"
+author: "Hersh Gupta"
+date: "2025-02-15"
+categories: [Employment, Government]
+---
+
+When I graduated college with technical skills in statistics and computational social science, I was drawn to public service. A semester in the nation's capital and deep dive into [Street-level Bureaucracy](https://www.russellsage.org/publications/street-level-bureaucracy) had convinced me that state and local government was where I could make the most meaningful impact. What I didn't expect was how the very systems designed to bring talent into government would become the biggest obstacle to that goal.
+
+### The Modern Reality of Government Hiring
+Jennifer Pahlka, author of "Recoding America," recently shared insights about government hiring challenges on [Bloomberg's Odd Lots podcast](https://omny.fm/shows/odd-lots/why-it-might-take-someone-like-elon-to-fix-how-gov). Her observations about federal hiring resonated deeply with my experience, though I've found these issues run even deeper at state and local levels.  
+
+The problems she identified are systemic:  
+1. Software systems that the private sector abandoned long ago    
+2. Evaluation processes that fail to assess actual capabilities  
+3. The exclusion of hiring managers from candidate screening  
+4. Outdated job descriptions that don't reflect current roles  
+5. HR processes that reward candidates who simply copy-paste job descriptions rather than those who honestly assess their skills  
+
+These challenges are amplified in state and local government. While federal agencies are implementing reforms through the [Chance to Compete Act](https://www.congress.gov/bill/118th-congress/senate-bill/59) and [SME-QA process pilots](https://www.usds.gov/projects/smeqa), state and local governments lack standardized guidance. With thousands of agencies developing independent hiring approaches, the result is a fragmented system with minimal oversight and few opportunities for innovation.
+
+### My Journey Through the Bureaucratic Maze
+My experience with DC government's hiring system illustrated these challenges perfectly. Their HRMS ([PeopleSoft](https://www.oracle.com/applications/peoplesoft/)) suffered from persistent technical issues – broken links to position descriptions forced hiring managers to create workarounds just to advertise openings. The application process included the thing that bothers everyone when applying for positions: candidates would upload their resumes, only to manually input the same information again. Their process also required candidates to self-assess their skills, disincentivizing honesty for those who know who the system works.   
+
+Later, when I transitioned to the hiring side, I witnessed how these inefficiencies created new problems. Some agencies began relying on contractors instead of full-time employees to bypass HR departments. While this offered a temporary solution, it introduced new risks and potential biases into the hiring process.  
+
+### The Same Experiences Across Governments
+My most recent attempt to return to public service in Massachusetts further highlighted these systemic issues. After relocating with my family, I encountered a series of discouraging experiences:
+multiple applications disappeared into weeks of silence. 
+
+In one case, I advanced through several interview rounds and was selected as the top candidate, only to have the opportunity evaporate due to a sudden state-wide hiring freeze. In another instance, despite an internal recommendation, I waited months for a position to open, completed one interview expecting another to follow, and then received a rejection after four weeks without any feedback.
+
+### The Private Sector Contrast
+The contrast became clear when I explored private sector opportunities. A consulting firm completed their entire hiring process – including skills assessments and consistent communication – in three weeks. This efficiency wasn't merely about speed; it reflected a modern understanding of how to use skills-based evaluations and secure talented candidates.
+
+### Looking Forward
+While organizations like [Work for America](https://www.workforamerica.org/) are beginning to address these challenges, their impact hasn't yet reached the thousands of state and local agencies that need it most. As someone with expertise in AI, machine learning, data governance, engineering, and evaluation, I found it increasingly difficult to contribute these valuable skills to public service through existing channels.
+
+The irony is stark: systems intended to ensure fair and equitable hiring have become so rigid and inefficient that they're driving away the talent they should attract. For government to effectively serve its citizens in an increasingly technical world, it needs hiring processes that can keep pace with evolving technology and the changing nature of public service work.
+
+It's crucial to note that this critique of hiring systems comes at a particularly challenging time for public servants across all levels of government. Many dedicated civil servants are facing unprecedented pressures and uncertainty about their roles. My criticism is directed solely at outdated systems and processes that make it difficult to bring new talent into government – not at the countless committed individuals who work tirelessly to serve the public good despite these obstacles.
+
+This isn't about giving up on public service – it's about recognizing when systems have become barriers rather than gateways to public impact. Until these fundamental issues are addressed, talented individuals with technical skills and a genuine desire to serve the public good will continue finding themselves redirected to the private sector, not by choice, but by necessity.
