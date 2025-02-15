@@ -4,7 +4,7 @@ execute:
   freeze: auto
 website:
   title: "Hersh Gupta"
-  description: "Hersh Gupta is a data scientist working in municipal government"
+  description: "Thoughts on data science and strategy"
   google-analytics: "G-GXXLWF1R58"
   cookie-consent: false
   favicon: static/favicon.ico
@@ -46,7 +46,7 @@ format:
       - cosmo
       - custom.scss
 editor: source
-pagetitle: "{{< meta title >}} | Hersh Gupta"
+pagetitle: "{{< meta title >}}"
 description-meta: "{{< meta description >}}"
 author-meta: "Hersh Gupta"
 

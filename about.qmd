@@ -15,8 +15,25 @@ about:
       href: https://github.com/hersh-gupta
 ---
 
-My name is Hersh and I'm a data scientist based in Boston, MA and I love to use data to make an impact on policy, processes, and government. 
+# 🌊 Hi, I'm Hersh!
 
-All opinions expressed in this blog represent my own.
+## 🔄⚡ Empowering Organizations with Data and Technology
+I'm passionate about leveraging data science and advanced technology to drive innovation and create meaningful impact through data-driven solutions.
 
+### 🏢 Current Status
+I most recently worked with the Chief Data Officer in the District of Columbia. Currently open to new opportunities!
+
+### 🌱 Focus Areas
+
+- 🤖 Machine Learning & Responsible AI Development
+- 🎯 Ethical AI Implementation & Governance
+- 🏗️ Scalable ML Infrastructure & MLOps
+- 📊 Advanced Analytics & Data Strategy
+- 🔮 Predictive Modeling & Decision Intelligence
+- 📚 AI Literacy & Team Development
+
+### 🎤 Knowledge Sharing
+Guest lecturer at American University and Georgetown University, experienced in leading data literacy initiatives and organizing community events.
+
+### 🤝 Let's Connect!
 Reach out to me here! 👇🏾:
