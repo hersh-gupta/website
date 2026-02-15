@@ -1,34 +1,26 @@
 ---
 title: "About Me"
-# image: profile.jpg
-about:
-  template: jolla
-  links:
-    - icon: bluesky
-      text: "{{< fa brands bluesky >}} Bluesky"
-      href: https://bsky.app/profile/hershgupta.com
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/hershvgupta
-    - icon: github
-      text: Github
-      href: https://github.com/hersh-gupta
 ---
 
-### 🌊 Hi, I'm Hersh!
- 
-I'm passionate about leveraging data science and advanced technology to drive innovation and create meaningful impact through data-driven solutions. I most recently worked with the Chief Data Officer in the District of Columbia.
+### Hi, I'm Hersh
 
-**🌱 Focus Areas:**  
-🤖 Machine Learning & Responsible AI Development  
-🎯 Ethical AI Implementation & Governance  
-🏗️ Scalable ML Infrastructure & MLOps  
-📊 Advanced Analytics & Data Strategy  
-🔮 Predictive Modeling & Decision Intelligence  
-📚 AI Literacy & Team Development  
+I'm an applied scientist at BCG X focused on responsible AI and GenAI evaluation. I spend most of my time figuring out whether AI systems are safe, reliable, and actually doing what they're supposed to, across LLMs, multimodal models, and AI agents.
 
-**🎤 Knowledge Sharing**   
-Guest lecturer at American University and Georgetown University, experienced in leading data literacy initiatives and organizing community events.
+Before this, I spent about five years in DC government, first as a data scientist at the Department of Human Services and later as a principal data scientist and data strategy lead at the Office of the Chief Technology Officer. I built ML models, stood up data infrastructure, wrote DC's responsible AI framework, and helped run a data science community across city agencies. I also spent time as a research fellow at The Lab @ DC, where I worked with social scientists on policy evaluation.
 
-**🤝 Let's Connect! ** 
-Reach out to me here! 👇🏾:
+**What I'm working on now**
+
+- Evaluating safety, reliability, and performance across GenAI products
+- Building automated testing and CI/CD pipelines for continuous AI evaluation
+- Mentoring data scientists and engineers on measurement approaches for GenAI
+
+**What I've worked on before**
+
+- Production GenAI assistants with safety guardrails for government use
+- ML models for fire risk identification, homelessness analytics, and social services
+- DC's first responsible AI framework and evaluation guidelines
+- Machine learning models scored on 300M+ records for political campaigns
+
+**Get in touch**
+
+I'm always happy to connect — find me on [Bluesky](https://bsky.app/profile/hershgupta.com), [LinkedIn](https://www.linkedin.com/in/hershvgupta), or [GitHub](https://github.com/hersh-gupta).

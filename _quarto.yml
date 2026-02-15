@@ -1,10 +1,14 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+    - "talks/**/*.qmd"
 execute:
   freeze: auto
 website:
   title: "Hersh Gupta"
-  description: "Thoughts on data science and strategy"
+  description: "Responsible AI, Generative AI, and applied science"
   google-analytics: "G-GXXLWF1R58"
   cookie-consent: false
   favicon: static/favicon.ico
@@ -15,12 +19,12 @@ website:
     left:
       - text: "About"
         href: "about.qmd"
-      - text: "Talks"
-        href: "talks"
+      # - text: "Talks"
+      #   href: "talks"
     right:
       - icon: envelope
         aria-label: email
-        href: "mailto:h.v.gupta@outlook.com"
+        href: "mailto:h(dot)v(dot)gupta@outlook.com"
       - text: "{{< fa brands bluesky >}}"
         aria-label: bluesky
         href: https://bsky.app/profile/hershgupta.com
@@ -34,20 +38,12 @@ website:
     location: navbar
     type: overlay
   page-footer:
-    left: |
-      <span class="faux-block">{{< fa brands creative-commons >}} Hersh Gupta</span>
-      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>      
-    right: |
-      <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
-      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub](https://github.com/hersh-gupta/website)</span>
+    center: |
+      Made with [Quarto](https://quarto.org/) · [Source on GitHub](https://github.com/hersh-gupta/website)
 format:
   html:
-    theme: 
+    theme:
       - cosmo
       - custom.scss
 editor: source
-pagetitle: "{{< meta title >}}"
-description-meta: "{{< meta description >}}"
 author-meta: "Hersh Gupta"
-
-

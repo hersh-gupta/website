@@ -1,6 +1,6 @@
 ---
 title: "Talks"
-description-meta: "{{< meta website.description >}}"
+description: "Talks and presentations by Hersh Gupta"
 page-layout: article
 listing: 
   fields: [title]
