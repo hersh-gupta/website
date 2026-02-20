@@ -2,6 +2,7 @@
 .Rproj.user/
 /.quarto/
 /_site/
+/_freeze/
 /node_modules/
 CLAUDE.md
 .claude
