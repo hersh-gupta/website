@@ -1,0 +1,6 @@
+<% for (const item of items) { %>
+<a href="<%- item.path %>" <%= metadataAttrs(item) %>>
+  <span class="latest-label">Latest essay · <%= item.date %></span>
+  <span class="latest-title"><%= item.title %></span>
+</a>
+<% } %>

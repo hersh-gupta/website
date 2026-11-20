@@ -1,42 +1,98 @@
 ---
 title: "Hersh Gupta"
+description: "Applied scientist writing about AI, data, and the public sector."
 listing:
-  id: recent-posts
+  id: latest-essay
   contents: posts
   sort: "date desc"
-  type: default
-  max-items: 5
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  fields: [date, title, description, categories]
+  max-items: 1
+  type: custom
+  template: _latest-essay.ejs
+  date-format: "MMM YYYY"
 page-layout: full
 title-block-banner: false
 toc: false
 format:
   html:
     body-classes: homepage
+include-after-body:
+  text: |
+    <script>
+    // Touch screens have no hover, so reveal the highlights once on load.
+    if (window.matchMedia('(hover: none)').matches) {
+      setTimeout(function () {
+        document.querySelectorAll('.splash .hl').forEach(function (el) { el.classList.add('on'); });
+      }, 400);
+    }
+    </script>
 ---
 
-:::::: {.homepage-content}
+:::::::: {.splash}
 
-::: {.hero-section}
-
-::: {.tagline}
-Responsible AI · Generative AI · Applied Science
+::: {.splash-nav role="navigation" aria-label="Site"}
+[Writing](writing.qmd) [Projects](projects.qmd) [Talks](talks/index.qmd) [About](about.qmd)
 :::
 
-::: {.intro}
-I'm an applied scientist working on responsible AI and generative AI evaluation. I've spent the past eight years building ML systems and leading data science teams, mostly across government and enterprise settings. These days I'm focused on model evaluation, risk assessment, and figuring out how to deploy AI thoughtfully.
+::::: {.splash-header}
+
+<!-- To use a headshot: add images/headshot.jpg and replace "hg" below with
+     ![](images/headshot.jpg){fig-alt="Hersh Gupta"} -->
+::: {.portrait aria-hidden="true"}
+hg
+:::
+
+::: {.kicker}
+AI · Data science · Government
+:::
+
+<h1 class="name">Hersh <em>Gupta</em></h1>
+
+::: {.standfirst}
+An applied scientist writing about AI, data, and the public sector.
+:::
+
+:::::
+
+::: {.bio}
+I'm an applied scientist working on [responsible AI and generative AI evaluation]{.hl}. I've spent the past eight years building ML systems and leading data science teams, mostly across [government and enterprise]{.hl} settings. These days I'm focused on model evaluation, risk assessment, and figuring out how to deploy AI thoughtfully.
+:::
+
+::: {.ornament aria-hidden="true"}
+✦ ✦ ✦
+:::
+
+::: {.section-label}
+Contents
+:::
+
+::: {.toc-list}
+1. [[i.]{.n aria-hidden="true"}[Writing]{.t}[]{.lead aria-hidden="true"}[essays]{.p}[AI, open source and public-sector data.]{.s}](writing.qmd)
+2. [[ii.]{.n aria-hidden="true"}[Projects]{.t}[]{.lead aria-hidden="true"}[builds]{.p}[CityUpdate Boston, Smart 311, the 311 dashboard, RentSmart.]{.s}](projects.qmd)
+3. [[iii.]{.n aria-hidden="true"}[Talks]{.t}[]{.lead aria-hidden="true"}[slides]{.p}[Slides from presentations.]{.s}](talks/index.qmd)
+4. [[iv.]{.n aria-hidden="true"}[About]{.t}[]{.lead aria-hidden="true"}[bio]{.p}[Experience, and how to get in touch.]{.s}](about.qmd)
+:::
+
+::: {#latest-essay .latest}
+:::
+
+::: {.career}
+
+::: {.section-label}
+Career
+:::
+
+::: {.ledger}
+- [2025 – now]{.y} [Lead Applied Scientist, Responsible AI [BCG X]{}]{.r}
+- [2022 – 2024]{.y} [Data Strategy Lead [DC Office of the Chief Technology Officer]{}]{.r}
+- [2020 – 2022]{.y} [Principal Data Scientist [DC Office of the Chief Technology Officer]{}]{.r}
+- [2019 – 2024]{.y} [Research Fellow [The Lab @ DC]{}]{.r}
+- [2016 – 2019]{.y} [Data Scientist [DC Department of Human Services]{}]{.r}
 :::
 
 :::
 
-::: {.recent-posts-heading}
-Recent Writing
+::: {.splash-social role="navigation" aria-label="Elsewhere"}
+[Bluesky](https://bsky.app/profile/hershgupta.com) [GitHub](https://github.com/hersh-gupta) [LinkedIn](https://www.linkedin.com/in/hershvgupta) [Email](mailto:h(dot)v(dot)gupta@outlook.com)
 :::
 
-:::{#recent-posts}
-:::
-
-::::::
+::::::::

@@ -1,376 +1,550 @@
 /*-- scss:defaults --*/
 
-$theme: "hvg" !default;
-
-//
-// Color system — warm neutrals
-//
-
-$cream:          #FAF8F5 !default;
-$warm-white:     #FFFDF9 !default;
-$warm-gray-100:  #F5F0EB !default;
-$warm-gray-200:  #E8E0D8 !default;
-$warm-gray-300:  #C4B8AC !default;
-$warm-gray-500:  #8A7E72 !default;
-$warm-gray-700:  #5C524A !default;
-$warm-gray-800:  #3D352F !default;
-$warm-gray-900:  #2A2420 !default;
-$accent:         #C1666B !default;
-$link-blue:      #5C7A99 !default;
+// ── Palette: paper, ink and sage ──
+$paper:    #F7F5EF !default;   // page background
+$paper-2:  #ECEDE3 !default;   // tinted surface (code, hovers)
+$ink:      #1E211C !default;   // headings
+$ink-2:    #4B5047 !default;   // body text
+$muted:    #6A7063 !default;   // labels, dates (AA on $paper)
+$sage:     #56705A !default;   // accent (AA on $paper)
+$sage-2:   #8FA68E !default;   // ornaments, soft borders
+$mark:     #DCE5D3 !default;   // highlighter
+$rule:     #DAD9CC !default;   // hairlines
 
 // Bootstrap overrides
-$white:    $cream !default;
-$gray-100: $warm-gray-100 !default;
-$gray-200: $warm-gray-200 !default;
-$gray-300: $warm-gray-300 !default;
-$gray-400: $warm-gray-300 !default;
-$gray-500: $warm-gray-500 !default;
-$gray-600: $warm-gray-700 !default;
-$gray-700: $warm-gray-700 !default;
-$gray-800: $warm-gray-800 !default;
-$gray-900: $warm-gray-900 !default;
-$black:    $warm-gray-900 !default;
+$white:    $paper !default;
+$gray-100: $paper-2 !default;
+$gray-200: $rule !default;
+$gray-300: $rule !default;
+$gray-400: $sage-2 !default;
+$gray-500: $muted !default;
+$gray-600: $muted !default;
+$gray-700: $ink-2 !default;
+$gray-800: $ink-2 !default;
+$gray-900: $ink !default;
+$black:    $ink !default;
 
-$primary:   $accent !default;
-$secondary: $warm-gray-500 !default;
-$success:   #6B8F71 !default;
-$info:      $link-blue !default;
-$warning:   #D4A574 !default;
-$danger:    $accent !default;
-$light:     $warm-gray-100 !default;
-$dark:      $warm-gray-900 !default;
+$primary:   $sage !default;
+$secondary: $muted !default;
+$success:   $sage !default;
+$info:      #5C7A8A !default;
+$warning:   #B8925A !default;
+$danger:    #A5524F !default;
+$light:     $paper-2 !default;
+$dark:      $ink !default;
 
-// Fonts
-$font-family-sans-serif: "Libre Baskerville", "Source Serif Pro", Georgia, serif !default;
-$font-family-serif: "Libre Baskerville", "Source Serif Pro", Georgia, serif !default;
-$headings-font-family: "Libre Baskerville", Georgia, serif !default;
-$headings-font-weight: 700 !default;
+// Type. Set here (not in rules) so it replaces Cosmo's own Google Fonts import.
+$web-font-path: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=JetBrains+Mono:wght@400;500&display=swap" !default;
+$font-family-serif: "Newsreader", "Libre Baskerville", Georgia, serif !default;
+$font-family-sans-serif: $font-family-serif !default;
+$font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace !default;
+$headings-font-family: $font-family-serif !default;
+$headings-font-weight: 400 !default;
+$navbar-font-family: $font-family-monospace !default;
+$toc-font-family: $font-family-serif !default;
+$footer-font-family: $font-family-monospace !default;
 
-$navbar-font-family: "Libre Baskerville", Georgia, serif !default;
-$toc-font-family: "Libre Baskerville", Georgia, serif !default;
-$footer-font-family: "Libre Baskerville", Georgia, serif !default;
+$body-bg: $paper !default;
+$body-color: $ink-2 !default;
+$font-size-base: 1.15rem !default;
 
-// Body
-$body-bg: $cream !default;
-$body-color: $warm-gray-800 !default;
-$font-size-base: 1.05rem !default;
-
-// Links
-$link-color: $link-blue !default;
+$link-color: $sage !default;
 $link-decoration: none !default;
-$link-hover-color: $accent !default;
+$link-hover-color: $ink !default;
 $link-hover-decoration: none !default;
 
-// Inline code
-$code-bg: $warm-gray-100 !default;
-$code-color: $warm-gray-800 !default;
+$code-bg: $paper-2 !default;
+$code-color: $ink !default;
+$btn-code-copy-color-active: $sage !default;
 
-// Code copy
-$btn-code-copy-color-active: $accent !default;
+$toc-color: $muted;
+$toc-font-size: 0.95em;
+$toc-active-border: $sage;
 
-// TOC
-$toc-color: $warm-gray-500;
-$toc-font-size: 1em;
-$toc-active-border: $accent;
+$navbar-bg: $paper !default;
+$navbar-fg: $ink-2 !default;
+$navbar-hl: $sage !default;
 
-// Navbar
-$navbar-bg: $cream !default;
-$navbar-fg: $warm-gray-800 !default;
-$navbar-hl: $accent !default;
-
-// Footer
-$footer-bg: $warm-gray-100 !default;
-$footer-fg: $warm-gray-500 !default;
+$footer-bg: $paper !default;
+$footer-fg: $muted !default;
 
 /*-- scss:rules --*/
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" !default;
+$ease: cubic-bezier(.2, .7, .2, 1);
 
-@if $web-font-path {
-    @import url($web-font-path);
+@mixin label {
+    font-family: $font-family-monospace;
+    font-size: .72rem;
+    font-weight: 400;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: $muted;
 }
 
 body {
     -webkit-font-smoothing: antialiased;
     line-height: 1.7;
-    background-color: $cream;
+    background-color: $paper;
+    font-optical-sizing: auto;
 }
 
-// ── Homepage ──
-body.homepage #title-block-header {
-    display: none;
-}
-
-.homepage-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-// ── Hero section on homepage ──
-.hero-section {
-    padding: 4rem 0 3rem;
-
-    h1 {
-        font-family: $headings-font-family;
-        font-size: 2.8rem;
-        font-weight: 700;
-        color: $warm-gray-900;
-        margin-bottom: 0.5rem;
-        line-height: 1.2;
-    }
-
-    .tagline {
-        font-family: $font-family-serif;
-        font-size: 1.25rem;
-        color: $warm-gray-500;
-        font-style: italic;
-        margin-bottom: 1.5rem;
-    }
-
-    .intro {
-        font-size: 1.1rem;
-        color: $warm-gray-700;
-        line-height: 1.8;
-    }
-}
-
-.recent-posts-heading {
+h1, h2, h3, h4, h5, h6 {
     font-family: $headings-font-family;
-    font-size: 1.5rem;
-    color: $warm-gray-800;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid $warm-gray-200;
+    color: $ink;
+    text-wrap: balance;
 }
 
-// ── Navbar ──
-.navbar {
-    font-family: $navbar-font-family;
-    border-bottom: 1px solid $warm-gray-200;
-    background-color: $cream !important;
+h2 { font-weight: 400; margin-top: 2.2rem; }
+h3 { font-weight: 500; }
 
-    .navbar-title {
-        font-family: $headings-font-family;
-        font-weight: 700;
-        color: $warm-gray-900;
-        font-size: 1.15rem;
+a { transition: color .2s ease; }
+
+// Links inside running text get a sage underline
+main.content p a,
+main.content li a {
+    text-decoration: underline;
+    text-decoration-color: rgba($sage, .35);
+    text-underline-offset: .18em;
+    text-decoration-thickness: 1px;
+    &:hover { text-decoration-color: $sage; }
+}
+
+:focus-visible {
+    outline: 2px solid $sage;
+    outline-offset: 3px;
+}
+
+blockquote {
+    border-left: 2px solid $sage-2;
+    color: $ink-2;
+    font-style: italic;
+}
+
+// ── Navbar (inner pages) ──
+.navbar {
+    background-color: $paper !important;
+    border-bottom: 1px solid $rule;
+
+    .navbar-brand .navbar-title {
+        font-family: $font-family-serif;
+        font-size: 1.2rem;
+        letter-spacing: 0;
+        text-transform: none;
+        color: $ink;
+        i, em { color: $sage; }
+    }
+
+    // Match the splash page's menu: monospace, small caps-style, muted
+    .nav-link,
+    .nav-link .menu-text {
+        font-family: $font-family-monospace;
+        font-weight: 400;
     }
 
     .nav-link {
-        color: $warm-gray-700 !important;
-        transition: color 0.2s ease;
-
-        &:hover {
-            color: $accent !important;
-        }
+        font-size: .74rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: $muted !important;
+        &:hover, &.active { color: $sage !important; }
     }
 }
 
-// Put all the icons in a single row in the hamburger menu
-.navbar-nav.navbar-nav-scroll.ms-auto {
-    flex-direction: row;
-}
+// Keep the icon links in one row inside the mobile menu
+.navbar-nav.navbar-nav-scroll.ms-auto { flex-direction: row; }
 
 // ── Footer ──
 .nav-footer {
-    align-items: center;
-    flex-wrap: wrap;
-    border: 0 !important;
-    border-top: 1px solid $warm-gray-200 !important;
-    min-height: 3em;
-    font-family: $footer-font-family;
-    background-color: $warm-gray-100;
+    border-top: 1px solid $rule !important;
+    background-color: $paper;
+    font-size: .8rem;
+    color: $muted;
     padding: 1.5rem 0;
+    .nav-footer-center, .nav-footer-center p { font-size: .8rem; }
+    a { color: $muted; &:hover { color: $sage; } }
+}
 
-    a {
-        color: $link-blue;
+// ── Splash page ──
+body.homepage {
+    #quarto-header,
+    #title-block-header { display: none; }
 
-        &:hover {
-            color: $accent;
+    .nav-footer { border-top: 0 !important; }
+
+    main.content { margin-top: 0; }
+}
+
+.splash {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 0 2rem;
+
+    // own nav (Quarto's navbar is hidden here)
+    .splash-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: .5rem clamp(18px, 4vw, 40px);
+        padding-top: 26px;
+        margin-bottom: clamp(40px, 8vh, 90px);
+        @include label;
+        font-size: .74rem;
+        letter-spacing: .14em;
+
+        p { display: contents; }
+
+        a {
+            position: relative;
+            display: inline-block;
+            padding-block: 10px;
+            color: $muted;
+            text-decoration: none;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0; right: 0; bottom: 6px;
+                height: 1px;
+                background: $sage;
+                transform: scaleX(0);
+                transition: transform .35s $ease;
+            }
+            &:hover { color: $sage; }
+            &:hover::after, &:focus-visible::after { transform: scaleX(1); }
         }
     }
 
-    .nav-footer-center {
+    .splash-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        position: inherit;
-        margin-top: 0;
+        gap: 18px;
+
+        p { margin: 0; }
     }
 
-    .nav-footer-left,
-    .nav-footer-right,
-    .nav-footer-center {
+    // Portrait: round frame; shows initials until a headshot is added
+    .portrait {
+        width: 148px;
+        height: 148px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: radial-gradient(circle at 35% 30%, $mark, $paper-2);
+        box-shadow: 0 0 0 7px $paper, 0 0 0 8px $rule;
+        display: grid;
+        place-items: center;
+        font-style: italic;
+        font-size: 2.6rem;
+        color: $sage;
+
+        p { margin: 0; display: contents; }
+        img { width: 100%; height: 100%; object-fit: cover; margin: 0; }
+    }
+
+    .kicker { @include label; }
+
+    .name {
+        font-weight: 300;
+        font-size: clamp(3.2rem, 10vw, 5.6rem);
+        line-height: 1;
+        letter-spacing: -.02em;
+        color: $ink;
+        em { font-weight: 400; color: $sage; }
+    }
+
+    .standfirst {
+        font-style: italic;
+        font-size: 1.45rem;
+        line-height: 1.35;
+        color: $ink-2;
+        max-width: 22em;
+        margin-top: 4px;
+        text-wrap: balance;
+    }
+
+    .bio {
+        margin-top: 44px;
+        color: $ink-2;
+        p { margin: 0 0 1.1em; }
+    }
+
+    // Highlighter swipe on hover (shown once on touch screens via splash.js)
+    .hl {
+        color: $ink;
+        background: linear-gradient($mark, $mark) no-repeat 0 88% / 0% 42%;
+        transition: background-size .7s $ease;
+    }
+    .bio:hover .hl, .hl.on { background-size: 100% 42%; }
+
+    .ornament {
+        margin: 48px auto 30px;
         text-align: center;
+        color: $sage-2;
+        letter-spacing: .6em;
+        p { margin: 0; }
+    }
+
+    .section-label {
+        @include label;
+        letter-spacing: .2em;
+        text-align: center;
+        margin-bottom: 10px;
+        p { margin: 0; }
+    }
+
+    // Contents: dot-leader table of contents
+    .toc-list ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .toc-list li { margin: 0; }
+    .toc-list a {
+        display: grid;
+        grid-template-columns: 2.2em auto 1fr auto;
+        align-items: baseline;
+        gap: 10px;
+        padding: 14px 4px;
+        border-bottom: 1px solid $rule;
+        color: $ink;
+        text-decoration: none;
+        transition: padding .35s $ease, color .3s;
+
+        .n { font-style: italic; color: $sage; }
+        .t { font-size: 1.55rem; }
+        .lead {
+            border-bottom: 1.5px dotted $muted;
+            transform: translateY(-6px);
+            opacity: .55;
+            transition: opacity .3s, border-color .3s;
+        }
+        .p { @include label; letter-spacing: .04em; text-transform: none; font-size: .78rem; }
+        .s { grid-column: 2 / -1; font-size: .95rem; color: $ink-2; margin-top: -4px; }
+
+        &:hover, &:focus-visible {
+            padding-left: 14px;
+            color: $sage;
+            .lead { opacity: 1; border-color: $sage; }
+        }
+    }
+
+    // Latest essay (custom listing template)
+    .latest {
+        margin-top: 40px;
+        a {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 18px 20px;
+            background: $paper-2;
+            border-radius: 4px;
+            text-decoration: none;
+            color: $ink;
+            transition: background .3s;
+            &:hover { background: $mark; }
+        }
+        .latest-label { @include label; font-size: .7rem; color: $ink-2; }
+        .latest-title { font-size: 1.15rem; font-style: italic; line-height: 1.4; }
+    }
+
+    // Career ledger
+    .career { margin-top: 56px; }
+    .ledger ol { list-style: none; margin: 0; padding: 0; }
+    .ledger li {
+        display: grid;
+        grid-template-columns: 8.5em 1fr;
+        gap: 16px;
+        margin: 0;
+        padding: 12px 0;
+        border-bottom: 1px solid $rule;
+    }
+    .ledger .y {
+        font-family: $font-family-monospace;
+        font-size: .78rem;
+        color: $muted;
+        padding-top: .35em;
+        font-variant-numeric: tabular-nums;
+    }
+    .ledger .r { font-size: 1.08rem; line-height: 1.45; color: $ink; }
+    .ledger .r span { display: block; color: $ink-2; font-size: .95rem; }
+
+    .splash-social {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 22px;
+        margin-top: 56px;
+        font-family: $font-family-monospace;
+        font-size: .75rem;
+        p { display: contents; }
+        a { display: inline-block; padding-block: 10px; color: $muted; text-decoration: none; &:hover { color: $sage; } }
+    }
+
+    @media (max-width: 520px) {
+        .ledger li { grid-template-columns: 1fr; gap: 2px; }
+    }
+}
+
+// ── Inner page title blocks ──
+#title-block-header {
+    .title { font-weight: 400; letter-spacing: -.01em; }
+    .description { font-style: italic; color: $ink-2; font-size: 1.15em; line-height: 1.4; }
+    .quarto-title-meta-heading { @include label; }
+    .quarto-categories .quarto-category {
+        font-family: $font-family-monospace;
+        font-size: .7rem;
+        letter-spacing: .06em;
+        border-color: $rule;
+        color: $sage;
+        background: transparent;
+    }
+}
+
+// ── Listings (Writing, Talks) ──
+.quarto-listing {
+    .listing-item {
+        border-bottom: 1px solid $rule;
+        padding: 1.25rem 0;
+        transition: padding .35s $ease;
+        &:hover { padding-left: 10px; }
+    }
+
+    .quarto-post {
+        flex-direction: column;
+        gap: .6em;
+        .metadata { order: -1; margin-bottom: 0; }
+        .thumbnail { display: none; }
+    }
+
+    .listing-title {
+        font-family: $font-family-serif;
+        font-size: 1.45rem;
+        font-weight: 400;
+        color: $ink;
+        line-height: 1.3;
+    }
+    a:hover .listing-title { color: $sage; }
+
+    .listing-description { color: $ink-2; }
+
+    .listing-date,
+    .listing-reading-time {
+        @include label;
+        letter-spacing: .08em;
+        white-space: nowrap;
+    }
+
+    .listing-categories .listing-category {
+        font-family: $font-family-monospace;
+        font-size: .68rem;
+        border-color: $rule;
+        color: $sage;
+    }
+}
+
+// Category sidebar
+#quarto-margin-sidebar {
+    .quarto-listing-category-title { @include label; margin-left: .5em; }
+    .quarto-listing-category {
+        font-size: 1em;
+        line-height: 1.1;
+        padding-left: .6rem;
+        margin-left: .5em;
+        border-left: 1px solid $rule;
+        .category { padding-bottom: .5rem; cursor: pointer; }
+        .active { color: $sage; }
+        .quarto-category-count { font-size: .8em; color: $muted; }
+    }
+}
+
+// ── Projects page ──
+.project-list {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 1.75rem;
+    align-items: start;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid $rule;
+
+    p { margin-bottom: .6rem; }
+
+    img {
         width: 100%;
-        min-height: 2em;
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
+        background: $paper-2;
+        border-radius: 4px;
+        border: 1px solid $rule;
+        transition: transform .5s $ease;
+    }
+    &:hover img { transform: translateY(-3px); }
+
+    h2 { margin-top: 0; font-size: 1.6rem; border-bottom: 0; padding-bottom: 0; }
+
+    .project-meta { @include label; margin-bottom: .4rem; }
+
+    .project-links {
+        font-family: $font-family-monospace;
+        font-size: .78rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        a { text-decoration: none !important; }
     }
 
-    @media (min-width: map-get($grid-breakpoints, md)) {
-        .nav-footer-left {
-            text-align: left;
-        }
-
-        .nav-footer-right {
-            text-align: right;
-        }
-
-        .nav-footer-left,
-        .nav-footer-right,
-        .nav-footer-center {
-            flex: 1 1 33%;
-        }
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
     }
 }
 
 // ── TOC ──
 #TOC {
-    font-family: $toc-font-family;
-    padding-bottom: 0.1em;
-
-    .active {
-        font-weight: 400;
-        border-left-color: $accent !important;
-        color: $accent !important;
-    }
-
-    #toc-title {
-        font-weight: 600;
-    }
+    .active { border-left-color: $sage !important; color: $sage !important; }
+    #toc-title { @include label; }
 }
 
 .sidebar nav[role="doc-toc"] > ul li a {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    color: $warm-gray-500;
-
-    &:hover {
-        color: $accent;
-    }
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    color: $muted;
+    &:hover { color: $sage; }
 }
 
-// ── Category sidebar ──
-#quarto-margin-sidebar {
-    .quarto-listing-category-title {
-        margin-left: 0.5em;
-    }
-
-    .quarto-listing-category {
-        font-family: $toc-font-family;
-        font-weight: 500;
-        font-size: 1em;
-        line-height: 1.1;
-        padding-left: 0.6rem;
-        margin-left: 0.5em;
-        border-left: 1px solid $warm-gray-200;
-
-        .category {
-            padding-bottom: 0.5rem;
-        }
-
-        .active {
-            font-weight: 400;
-            color: $accent;
-        }
-
-        .quarto-category-count {
-            font-weight: 200;
-            font-size: 0.8em;
-            color: $warm-gray-500;
-        }
-    }
-}
-
-// ── Blog listing cards ──
-.quarto-listing {
-    .listing-item {
-        border-bottom: 1px solid $warm-gray-200;
-        padding: 1.25rem 0;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-            background-color: $warm-gray-100;
-        }
-    }
-
-    // Put date inline above the title instead of a wide side column
-    .quarto-post {
-        flex-direction: column;
-
-        .metadata {
-            order: -1;
-            margin-bottom: 0;
-        }
-
-        gap: 1em;
-    }
-
-    .listing-title {
-        font-family: $headings-font-family;
-        color: $warm-gray-900;
-        font-weight: 700;
-    }
-
-    .listing-description {
-        color: $warm-gray-700;
-    }
-
-    .listing-date,
-    .listing-category {
-        color: $warm-gray-500;
-        font-size: 0.85em;
-        white-space: nowrap;
-    }
-}
-
-// ── Code blocks ──
+// ── Code ──
 pre.text, pre.sourceCode, .cell-output pre {
-    font-size: 0.775em;
-    background-color: $warm-gray-100;
-    border: 1px solid $warm-gray-200;
-    border-radius: 6px;
+    font-size: .74em;
+    background-color: $paper-2;
+    border: 1px solid $rule;
+    border-radius: 4px;
 }
 
 div.sourceCode {
-    background-color: $warm-gray-100;
-    border: 1px solid $warm-gray-200;
-    border-radius: 6px;
+    background-color: $paper-2;
+    border: 1px solid $rule;
+    border-radius: 4px;
 }
 
-// ── Title block (posts) ──
-#title-block-header {
-    .quarto-title-banner {
-        font-family: $headings-font-family;
-
-        .description {
-            font-size: 1.1em;
-            margin-top: 1em !important;
-        }
-    }
+// ── Tables ──
+.table {
+    font-size: .95em;
+    --bs-table-bg: transparent;
+    th { font-weight: 600; color: $ink; }
 }
 
-// ── Headings ──
-h1, h2, h3, h4, h5, h6 {
-    font-family: $headings-font-family;
-    color: $warm-gray-900;
+// ── About page links ──
+.about-entity .about-link {
+    background-color: $paper-2;
+    border: 1px solid $rule;
+    color: $ink-2;
+    &:hover { background-color: $sage; border-color: $sage; color: $paper; }
 }
 
-// ── Links ──
-a {
-    transition: color 0.2s ease;
-}
-
-// ── About page ──
-.about-entity {
-    .about-link {
-        background-color: $warm-gray-100;
-        border: 1px solid $warm-gray-200;
-        color: $warm-gray-700;
-
-        &:hover {
-            background-color: $accent;
-            border-color: $accent;
-            color: $cream;
-        }
-    }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
 }

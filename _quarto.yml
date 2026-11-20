@@ -16,11 +16,18 @@ website:
   twitter-card: true
   navbar:
     pinned: true
+    title: false
     left:
+      - text: "Home"
+        href: "index.qmd"
+      - text: "Writing"
+        href: "writing.qmd"
+      - text: "Projects"
+        href: "projects.qmd"
+      - text: "Talks"
+        href: "talks/index.qmd"
       - text: "About"
         href: "about.qmd"
-      # - text: "Talks"
-      #   href: "talks"
     right:
       - icon: envelope
         aria-label: email

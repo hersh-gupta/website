@@ -6,7 +6,7 @@ title: "About Me"
 
 I'm an applied scientist at BCG X focused on responsible AI and GenAI evaluation. I spend most of my time figuring out whether AI systems are safe, reliable, and actually doing what they're supposed to, across LLMs, multimodal models, and AI agents.
 
-Before this, I spent about five years in DC government, first as a data scientist at the Department of Human Services and later as a principal data scientist and data strategy lead at the Office of the Chief Technology Officer. I built ML models, stood up data infrastructure, wrote DC's responsible AI framework, and helped run a data science community across city agencies. I also spent time as a research fellow at The Lab @ DC, where I worked with social scientists on policy evaluation.
+Before this, I spent eight years in DC government, first as a data scientist at the Department of Human Services and later as a principal data scientist and data strategy lead at the Office of the Chief Technology Officer. I built ML models, stood up data infrastructure, wrote DC's responsible AI framework, and helped run a data science community across city agencies. I also spent time as a research fellow at The Lab @ DC, where I worked with social scientists on policy evaluation.
 
 **What I'm working on now**
 
