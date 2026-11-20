@@ -1,2 +1,10 @@
+[build.environment]
+  # Match the local toolchain (Node 24 / npm 11)
+  NODE_VERSION = "24"
+
 [[plugins]]
 package = "@quarto/netlify-plugin-quarto"
+
+  [plugins.inputs]
+  # Quarto release tag to install on Netlify; keep in sync with `quarto --version` locally
+  version = "v1.11.9"

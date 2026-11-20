@@ -6,3 +6,5 @@
 /node_modules/
 CLAUDE.md
 .claude
+
+**/*.quarto_ipynb
