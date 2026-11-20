@@ -1,6 +1,6 @@
 ---
 title: "Projects"
-description: "Things I've built, mostly with public data."
+description: "Builds and experiments in AI and data."
 title-block-banner: false
 toc: false
 ---
