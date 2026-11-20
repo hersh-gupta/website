@@ -7,7 +7,7 @@ categories: [Government, AI, LMM]
 description: "Enhance city service requests with AI"
 image: "smart-311-cover.png"
 execute:
-  eval: false
+  enabled: false
 ---
 
 ```{=html}
