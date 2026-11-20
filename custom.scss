@@ -511,6 +511,11 @@ body.homepage {
         a { text-decoration: none !important; }
     }
 
+    &.no-image { grid-template-columns: minmax(0, 1fr); }
+
+    ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+    li { margin-bottom: .35rem; }
+
     @media (max-width: 640px) {
         grid-template-columns: 1fr;
     }

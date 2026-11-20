@@ -62,7 +62,7 @@ Contents
 
 ::: {.toc-list}
 1. [[i.]{.n aria-hidden="true"}[Writing]{.t}[]{.lead aria-hidden="true"}[essays]{.p}[AI, open source and public-sector data.]{.s}](writing.qmd)
-2. [[ii.]{.n aria-hidden="true"}[Projects]{.t}[]{.lead aria-hidden="true"}[builds]{.p}[CityUpdate Boston, Smart 311, the 311 dashboard, RentSmart.]{.s}](projects.qmd)
+2. [[ii.]{.n aria-hidden="true"}[Projects]{.t}[]{.lead aria-hidden="true"}[builds]{.p}[Agent safety judges, clef-tune, NemoWispr, CityUpdate Boston and more.]{.s}](projects.qmd)
 3. [[iii.]{.n aria-hidden="true"}[Talks]{.t}[]{.lead aria-hidden="true"}[slides]{.p}[Slides from presentations.]{.s}](talks/index.qmd)
 4. [[iv.]{.n aria-hidden="true"}[About]{.t}[]{.lead aria-hidden="true"}[bio]{.p}[Experience, and how to get in touch.]{.s}](about.qmd)
 :::

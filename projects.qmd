@@ -9,6 +9,80 @@ toc: false
 
 ::::: {.project}
 ::: {}
+[![](images/projects/agent-safety-judges.png){fig-alt="Chart comparing tuned and untuned safety judge scores"}](https://github.com/hersh-gupta/agent-safety-judges)
+:::
+::: {}
+[2026 · Agent safety evaluation]{.project-meta}
+
+## Agent Safety Judges
+
+Tests how well Cloudflare's Clef 27B decision model judges AI agent traces for safety without any tuning, on three public benchmarks (ControlArena, ATBench and MALT), and whether tuning it helps.
+
+[[Code →](https://github.com/hersh-gupta/agent-safety-judges)]{.project-links}
+:::
+:::::
+
+::::: {.project}
+::: {}
+[![](images/projects/clef-tune.png){fig-alt="The clef-tune web interface"}](https://huggingface.co/spaces/hvgupta1/clef-tune)
+:::
+::: {}
+[2026 · Fine-tuning]{.project-meta}
+
+## clef-tune
+
+A harness for fine-tuning Cloudflare's Clef decision models on your own labeled spreadsheet, with a web interface on Hugging Face Spaces. On a benchmark of CFPB bank complaints, tuned models matched or beat Claude Opus 5.5 for a few cents per 1,000 complaints.
+
+[[Try it →](https://huggingface.co/spaces/hvgupta1/clef-tune) [Code →](https://github.com/hersh-gupta/clef-tune)]{.project-links}
+:::
+:::::
+
+::::: {.project}
+::: {}
+[![](images/projects/nemowispr.png){fig-alt="NemoWispr control panel"}](https://github.com/hersh-gupta/nemowispr)
+:::
+::: {}
+[2026 · On-device AI]{.project-meta}
+
+## NemoWispr
+
+Offline voice dictation and a voice-controlled desktop agent for Windows, running NVIDIA Nemotron 3.5 Bolt locally in llama.cpp. Risky actions such as sending or deleting always ask for confirmation first.
+
+[[Code →](https://github.com/hersh-gupta/nemowispr)]{.project-links}
+:::
+:::::
+
+::::: {.project}
+::: {}
+[![](images/projects/safety-rl.svg){fig-alt="Diagram of the training pipeline: base model, SFT warm start, then GRPO or DPO, then evaluation"}](https://github.com/hersh-gupta/safety-reinforcement-learning)
+:::
+::: {}
+[2026 · Safety alignment]{.project-meta}
+
+## Safety Reinforcement Learning
+
+Training pipelines that align the small Qwen3.5-0.8B model for safety and helpfulness, using GRPO, DPO and supervised fine-tuning. GRPO is scored with a reward that balances refusing harmful requests against over-refusing harmless ones, and an evaluator compares trained models with the base model.
+
+[[Code →](https://github.com/hersh-gupta/safety-reinforcement-learning)]{.project-links}
+:::
+:::::
+
+::::: {.project .no-image}
+::: {}
+[2026 · Safety and robustness]{.project-meta}
+
+## AI Safety Experiments
+
+Small example repos from working through safety and robustness methods:
+
+- [robustness-example](https://github.com/hersh-gupta/robustness-example): making LLM outputs more consistent from run to run
+- [petri-example](https://github.com/hersh-gupta/petri-example): minimal alignment audits with Petri
+- [safety-prompt-optimization](https://github.com/hersh-gupta/safety-prompt-optimization): optimizing a prompt against safety metrics with DSPy's GEPA
+:::
+:::::
+
+::::: {.project}
+::: {}
 [![](posts/building-ai-power-app-for-government/cover.png){fig-alt="CityUpdate Boston screenshot"}](https://hersh-gupta.github.io/cityupdate/)
 :::
 ::: {}
