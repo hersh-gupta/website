@@ -1,6 +1,6 @@
 ---
 title: "Hersh Gupta"
-description: "Applied scientist writing about AI, data, and the public sector."
+description: "Applied scientist who builds and evaluates AI systems, and writes about using them well in government."
 listing:
   id: latest-essay
   contents: posts
@@ -35,19 +35,16 @@ include-after-body:
 
 ::::: {.splash-header}
 
+:::: {.byline}
 ::: {.portrait}
-![](images/headshot.jpeg){fig-alt="Hersh Gupta"}
+![](images/headshot.jpeg){fig-alt="Photo of Hersh Gupta"}
 :::
-
-::: {.kicker}
-AI · Data science · Government
+::: {.byline-text}
+[Hersh Gupta]{.byline-name} [AI · Data science · Government]{.kicker}
 :::
+::::
 
-<h1 class="name">Hersh <em>Gupta</em></h1>
-
-::: {.standfirst}
-An applied scientist writing about AI, data, and the public sector.
-:::
+<h1 class="greeting">Hi, I'm Hersh. I build and evaluate AI systems, and write about using them well in government.</h1>
 
 :::::
 
