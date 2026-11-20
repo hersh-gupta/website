@@ -35,10 +35,8 @@ include-after-body:
 
 ::::: {.splash-header}
 
-<!-- To use a headshot: add images/headshot.jpg and replace "hg" below with
-     ![](images/headshot.jpg){fig-alt="Hersh Gupta"} -->
-::: {.portrait aria-hidden="true"}
-hg
+::: {.portrait}
+![](images/headshot.jpeg){fig-alt="Hersh Gupta"}
 :::
 
 ::: {.kicker}
